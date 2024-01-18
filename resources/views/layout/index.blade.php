@@ -20,17 +20,17 @@
   <link
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
-  <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../../assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
-  <link href="../../assets/plugins/pace/pace.css" rel="stylesheet">
+  <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/plugins/pace/pace.css') }}" rel="stylesheet">
 
 
   <!-- Theme Styles -->
-  <link href="../../assets/css/main.min.css" rel="stylesheet">
-  <link href="../../assets/css/custom.css" rel="stylesheet">
+  <link href="{{ asset('assets/css/main.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/neptune.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/neptune.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/images/neptune.png') }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/neptune.png') }}" />
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -126,13 +126,13 @@
                 </li>
                 <li class="nav-item hidden-on-mobile">
                   <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown"
-                    data-bs-toggle="dropdown"><img src="../../assets/images/flags/us.png" alt=""></a>
+                    data-bs-toggle="dropdown"><img src="{{ asset('assets/images/flags/us.png') }}" alt=""></a>
                   <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
-                    <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/germany.png"
+                    <li><a class="dropdown-item" href="#"><img src="{{ asset('assets/images/flags/germany.png') }}"
                           alt="">German</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/italy.png"
+                    <li><a class="dropdown-item" href="#"><img src="{{ asset('assets/images/flags/italy.png') }}"
                           alt="">Italian</a></li>
-                    <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/china.png"
+                    <li><a class="dropdown-item" href="#"><img src="{{ asset('assets/images/flags/china.png') }}"
                           alt="">Chinese</a></li>
                   </ul>
                 </li>
@@ -188,7 +188,7 @@
                         <div class="notifications-dropdown-item">
                           <div class="notifications-dropdown-item-image">
                             <span class="notifications-badge">
-                              <img src="../../assets/images/avatars/avatar.png" alt="">
+                              <img src="{{ asset('assets/images/avatars/avatar.png') }}" alt="">
                             </span>
                           </div>
                           <div class="notifications-dropdown-item-text">
@@ -201,7 +201,7 @@
                         <div class="notifications-dropdown-item">
                           <div class="notifications-dropdown-item-image">
                             <span class="notifications-badge">
-                              <img src="../../assets/images/avatars/avatar.png" alt="">
+                              <img src="{{ asset('assets/images/avatars/avatar.png') }}" alt="">
                             </span>
                           </div>
                           <div class="notifications-dropdown-item-text">
@@ -224,13 +224,13 @@
     </div>
 
     <!-- Javascripts -->
-    <script src="../../assets/plugins/jquery/jquery-3.5.1.min.js"></script>
-    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../assets/plugins/perfectscroll/perfect-scrollbar.min.js"></script>
-    <script src="../../assets/plugins/pace/pace.min.js"></script>
-    <script src="../../assets/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="../../assets/js/main.min.js"></script>
-    <script src="../../assets/js/custom.js"></script>
-    <script src="../../assets/js/pages/dashboard.js"></script>
+    <script src="{{ asset('assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pace/pace.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
   </div>
 </body>
