@@ -10,7 +10,7 @@
   <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
   <!-- Title -->
-  <title>Monev</title>
+  <title>SIPRAS</title>
 
   <!-- Styles -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
