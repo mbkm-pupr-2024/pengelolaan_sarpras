@@ -1,308 +1,118 @@
-$(document).ready(function () {
+/**
+ * Main
+ */
 
-    "use strict";
+'use strict';
 
-    // Properties
-    const submenu_animation_speed = 200;
+let menu, animate;
 
-    // Functions
-    const appMenu = function () {
+(function () {
+  // Initialize menu
+  //-----------------
 
-        if ($('.horizontal-menu').length) {
-
-            $('.hide-sidebar-toggle-button').on('click', function (e) {
-                e.preventDefault()
-                toggleSidebar()
-            });
-
-            var select_sub_menus = $('.app-menu li:not(.open) ul'),
-            active_page_sub_menu_link = $('.app-menu li.active-page > a');
-
-            var ps;
-
-            if ($(window).width() > 1199) {
-                if (ps != null) {
-                    ps.destroy();
-                    ps = null;
-                }
-            } else {
-                var container = document.querySelector('.app-menu');
-                ps = new PerfectScrollbar(container);
-                
-                // Hide all sub-menus
-                select_sub_menus.hide();
-            }
-
-            $(window).resize(function () {
-                if ($(window).width() > 1199 && ps != null) {
-                    ps.destroy();
-                    ps = null;
-                } else {
-                    var container = document.querySelector('.app-menu');
-                    ps = new PerfectScrollbar(container);
-                
-                    // Hide all sub-menus
-                    select_sub_menus.hide();
-                }
-            });
-
-            $('.app-menu li a').on('click', function (e) {
-
-
-                var sub_menu = $(this).next('ul'),
-                    parent_list_el = $(this).parent('li'),
-                    active_list_element = $('.app-menu .menu-list > li.open'),
-                    show_sub_menu = function () {
-                        sub_menu.slideDown(submenu_animation_speed);
-                        parent_list_el.addClass('open');
-                        ps.update();
-                    },
-                    hide_sub_menu = function () {
-                        sub_menu.slideUp(submenu_animation_speed);
-                        parent_list_el.removeClass('open');
-                        ps.update();
-                    },
-                    hide_active_menu = function () {
-                        parent_list_el.parent().children('.open').children('ul').slideUp(submenu_animation_speed);
-                        parent_list_el.parent().children('.open').removeClass('open');
-                        ps.update();
-                    };
-
-                if (sub_menu.length) {
-
-                    if ($(window).width() > 1199) {
-                        e.preventDefault();
-                        return;
-                    }
-
-                    if (!parent_list_el.hasClass('open')) {
-                        if (active_list_element.length) {
-                            hide_active_menu();
-                        };
-                        show_sub_menu();
-                    } else {
-                        hide_sub_menu();
-                    };
-
-                    return false;
-
-                };
-
-
-            });
-        }
-
-        if (!$('.app-sidebar').length) {
-            return;
-        }
-
-        var select_sub_menus = $('.accordion-menu li:not(.open) ul'),
-            active_page_sub_menu_link = $('.accordion-menu li.active-page > a');
-
-
-
-        // Hide all sub-menus
-        select_sub_menus.hide();
-
-        var ps;
-
-        if ($(".app.menu-hover").length && $(window).width() > 1199) {
-            ps.destroy();
-            ps = null;
-        } else {
-            var container = document.querySelector('.app-menu');
-            ps = new PerfectScrollbar(container);
-        }
-
-        $(window).resize(function() {
-            if ($(".app.menu-hover").length && $(window).width() > 1199 && !ps.length) {
-                var container = document.querySelector('.app-menu');
-                ps = new PerfectScrollbar(container);
-            } else if (ps.length) {
-                ps.destroy();
-                ps = null;
-            }
-        });
-
-
-        // Menu
-        $('.accordion-menu li a').on('click', function (e) {
-
-
-            var sub_menu = $(this).next('ul'),
-                parent_list_el = $(this).parent('li'),
-                active_list_element = $('.accordion-menu > li.open'),
-                show_sub_menu = function () {
-                    sub_menu.slideDown(submenu_animation_speed);
-                    parent_list_el.addClass('open');
-                    ps.update();
-                },
-                hide_sub_menu = function () {
-                    sub_menu.slideUp(submenu_animation_speed);
-                    parent_list_el.removeClass('open');
-                    ps.update();
-                },
-                hide_active_menu = function () {
-                    parent_list_el.parent().children('.open').children('ul').slideUp(submenu_animation_speed);
-                    parent_list_el.parent().children('.open').removeClass('open');
-                    ps.update();
-                };
-
-            if (sub_menu.length) {
-
-                if ($('.app').hasClass('menu-hover') && $(window).width() > 1199) {
-                    e.preventDefault();
-                    return;
-                }
-
-                if (!parent_list_el.hasClass('open')) {
-                    if (active_list_element.length) {
-                        hide_active_menu();
-                    };
-                    show_sub_menu();
-                } else {
-                    hide_sub_menu();
-                };
-
-                return false;
-
-            };
-
-
-        });
-
-        if (($('.active-page > ul').length)) {
-            if(!($('.app').hasClass('menu-hover'))) {
-                active_page_sub_menu_link.click();
-            } else if ($(window).width() < 1199) {
-                active_page_sub_menu_link.click();
-            }
-        };
-
-        if (!$('.app').hasClass('menu-off-canvas')) {
-            if ($(window).width() < 1199 && !$('.app').hasClass('sidebar-hidden')) {
-                if(!$('.hide-app-sidebar-mobile').length) {
-                    $('.app').append('<div class="hide-app-sidebar-mobile"></div>'); 
-                }
-                $('.hide-sidebar-toggle-button i').text('last_page');
-            } else {
-                $('.hide-sidebar-toggle-button i').text('first_page');
-            }
-
-            $( window ).resize(function() {
-                if ($(window).width() < 1199 && !$('.app').hasClass('sidebar-hidden')) {
-                    if(!$('.hide-app-sidebar-mobile').length) {
-                        $('.app').append('<div class="hide-app-sidebar-mobile"></div>'); 
-                    }
-                    $('.hide-sidebar-toggle-button i').text('last_page');
-                } else {
-                    $('.hide-sidebar-toggle-button i').text('first_page');
-                }
-            });
-        }
-
-        $('.hide-sidebar-toggle-button').on('click', function (e) {
-            e.preventDefault()
-            toggleSidebar()
-        });
-
-        $('.hide-app-sidebar-mobile').on('click', function (e) {
-            e.preventDefault()
-            toggleSidebar()
-        });
-
-        function toggleSidebar() {
-            if ($('.app').hasClass('menu-off-canvas')) {
-                return false;
-            }
-            $('.app').toggleClass('sidebar-hidden');
-            if ($('.app').hasClass('sidebar-hidden')) {
-                setTimeout(function () {
-                    $('.app-sidebar .logo').addClass('hidden-sidebar-logo');
-                }, 200)
-                if ($(window).width() > 1199) {
-                    $('.hide-sidebar-toggle-button i').text('last_page');
-                } else {
-                    $('.hide-sidebar-toggle-button i').text('first_page');
-                }
-            } else {
-                $('.app-sidebar .logo').removeClass('hidden-sidebar-logo');
-
-                if ($(window).width() > 1199) {
-                    $('.hide-sidebar-toggle-button i').text('first_page');
-                } else {
-                    $('.hide-sidebar-toggle-button i').text('last_page');
-                }
-            }
-            return false;
-        };
-
-
-        $('.menu-off-canvas .hide-sidebar-toggle-button').on('click', function () {
-            $('.app').toggleClass('menu-off-canvas-show');
-            if ($('.app').hasClass('menu-off-canvas-show')) {
-                    $('.app-sidebar .logo').addClass('canvas-sidebar-hidden-logo');
-            } else {
-                setTimeout(function () {
-                    $('.app-sidebar .logo').removeClass('canvas-sidebar-hidden-logo');
-                }, 200)
-            }
-            return false;
-        });
-
-    };
-
-    $('.toggle-search').on('click', function (e) {
-        $('.app').toggleClass('search-visible')
-        e.preventDefault()
+  let layoutMenuEl = document.querySelectorAll('#layout-menu');
+  layoutMenuEl.forEach(function (element) {
+    menu = new Menu(element, {
+      orientation: 'vertical',
+      closeChildren: false
     });
+    // Change parameter to true if you want scroll animation
+    window.Helpers.scrollToActive((animate = false));
+    window.Helpers.mainMenu = menu;
+  });
 
-    // Plugins
-    const plugins = function () {
+  // Initialize menu togglers and bind click on each
+  let menuToggler = document.querySelectorAll('.layout-menu-toggle');
+  menuToggler.forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      window.Helpers.toggleCollapsed();
+    });
+  });
 
-        $('[data-bs-toggle="popover"]').popover();
-        $('[data-bs-toggle="tooltip"]').tooltip();
-
-        window.addEventListener('load', function () {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-
+  // Display menu toggle (layout-menu-toggle) on hover with delay
+  let delay = function (elem, callback) {
+    let timeout = null;
+    elem.onmouseenter = function () {
+      // Set timeout to be a timer which will invoke callback after 300ms (not for small screen)
+      if (!Helpers.isSmallScreen()) {
+        timeout = setTimeout(callback, 300);
+      } else {
+        timeout = setTimeout(callback, 0);
+      }
     };
 
-    $('.content-menu-toggle').on('click', function() {
-        $('body').toggleClass('content-menu-shown')
-    })
+    elem.onmouseleave = function () {
+      // Clear any timers set to timeout
+      document.querySelector('.layout-menu-toggle').classList.remove('d-block');
+      clearTimeout(timeout);
+    };
+  };
+  if (document.getElementById('layout-menu')) {
+    delay(document.getElementById('layout-menu'), function () {
+      // not for small screen
+      if (!Helpers.isSmallScreen()) {
+        document.querySelector('.layout-menu-toggle').classList.add('d-block');
+      }
+    });
+  }
 
-    const components = () => {
-        if ($('.content-menu').length) {
-            const container = document.querySelector('.content-menu');
-            const ps = new PerfectScrollbar(container);
+  // Display in main menu when menu scrolls
+  let menuInnerContainer = document.getElementsByClassName('menu-inner'),
+    menuInnerShadow = document.getElementsByClassName('menu-inner-shadow')[0];
+  if (menuInnerContainer.length > 0 && menuInnerShadow) {
+    menuInnerContainer[0].addEventListener('ps-scroll-y', function () {
+      if (this.querySelector('.ps__thumb-y').offsetTop) {
+        menuInnerShadow.style.display = 'block';
+      } else {
+        menuInnerShadow.style.display = 'none';
+      }
+    });
+  }
 
-        }
+  // Init helpers & misc
+  // --------------------
 
+  // Init BS Tooltip
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+  // Accordion active class
+  const accordionActiveFunction = function (e) {
+    if (e.type == 'show.bs.collapse' || e.type == 'show.bs.collapse') {
+      e.target.closest('.accordion-item').classList.add('active');
+    } else {
+      e.target.closest('.accordion-item').classList.remove('active');
     }
+  };
 
-    // Init Functions
-    appMenu();
-    plugins();
-    components();
-    if (typeof hljs != "undefined") {
-        hljs.initHighlighting();
-    }
-});
+  const accordionTriggerList = [].slice.call(document.querySelectorAll('.accordion'));
+  const accordionList = accordionTriggerList.map(function (accordionTriggerEl) {
+    accordionTriggerEl.addEventListener('show.bs.collapse', accordionActiveFunction);
+    accordionTriggerEl.addEventListener('hide.bs.collapse', accordionActiveFunction);
+  });
 
-$(window).on("load", function () {
-    setTimeout(function() {
-    $('body').addClass('no-loader')}, 1000)
-});
+  // Auto update layout based on screen size
+  window.Helpers.setAutoUpdate(true);
+
+  // Toggle Password Visibility
+  window.Helpers.initPasswordToggle();
+
+  // Speech To Text
+  window.Helpers.initSpeechToText();
+
+  // Manage menu expanded/collapsed with templateCustomizer & local storage
+  //------------------------------------------------------------------
+
+  // If current layout is horizontal OR current window screen is small (overlay menu) than return from here
+  if (window.Helpers.isSmallScreen()) {
+    return;
+  }
+
+  // If current layout is vertical and current window screen is > small
+
+  // Auto update menu collapsed/expanded based on the themeConfig
+  window.Helpers.setCollapsed(true, false);
+})();
