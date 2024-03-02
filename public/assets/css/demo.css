@@ -105,3 +105,58 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+/*
+* Rooms layout
+******************************************************************************/
+table th,td{
+  padding-left: 0.3rem;
+}
+/* styles for Booking.php Forms nd all */
+#seatsDiagram td,
+#displaySeats td{
+  padding: 1rem;
+  text-align: center;
+  margin: 0.3rem;
+  width: 60px;
+  border: 3px solid transparent;
+  display: inline-block;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+#displaySeats{
+  margin: 3rem auto 1rem auto;
+}
+
+
+#seatsDiagram{
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#seatsDiagram  td.selected{
+  background-color: greenyellow;
+  -webkit-animation-name: rubberBand;
+  animation-name: rubberBand;
+  animation-duration: 300ms;
+  animation-fill-mode: both;
+}
+
+#seatsDiagram td.notAvailable,
+#displaySeats td.notAvailable
+{
+  color: white;
+  background-color: #db2619;
+}
+
+#seatsDiagram td:not(.space,.notAvailable):hover{
+  cursor: pointer;
+  border-color:greenyellow;
+}
+
+#seatsDiagram .space,
+#displaySeats .space{
+  background-color: white;
+  border: none;
+}
