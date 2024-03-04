@@ -30,7 +30,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/wisma', function () {
         return view('admin.index-wisma');
-    })->name('wisma');
+    })->name('wisma-admin');
     Route::get('/transactions', function () {
         return view('admin.transactions');
     });

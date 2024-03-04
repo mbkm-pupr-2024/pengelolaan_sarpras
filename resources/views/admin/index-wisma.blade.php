@@ -5,7 +5,24 @@
 @section('nav')
 @include('layout.nav')
 @endsection
+
+@section('head')
+<link href="{{ asset('/assets/vendor/libs/datatables/datatables.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
+
+@if (session('success'))
+  <x-toast bgColor="bg-success" title="Success">
+    {{ session('success') }}
+  </x-toast>
+@endif
+
+@if (session('failed'))
+  <x-toast bgColor="bg-danger" title="Failed">
+    {{ session('failed') }}
+  </x-toast>
+@endif
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
@@ -13,7 +30,7 @@
         <div class="card">
                 <h5 class="card-header">Wisma & Paviliun</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
+                  <table id="datatable1" class="table">
                     <thead>
                       <tr>
                         <th>Properti</th>
@@ -25,8 +42,8 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                       <tr>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Bale Majapahit</strong></td>
-                        <td>Aula</td>
+                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Paviliun 48D - 1</strong></td>
+                        <td>Paviliun</td>
                         <td>
                           -
                         </td>
@@ -38,6 +55,9 @@
                             </button>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
                                 ><i class="bx bx-edit-alt me-2"></i> Edit</a
                               >
                               <a class="dropdown-item" href="javascript:void(0);"
@@ -48,8 +68,8 @@
                         </td>
                       </tr>
                       <tr>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Kelas Pekalensampean</strong></td>
-                        <td>Kelas</td>
+                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Suhodo 13 - a</strong></td>
+                        <td>Wisma</td>
                         <td>
                          -
                         </td>
@@ -61,6 +81,35 @@
                             </button>
                             <div class="dropdown-menu">
                               <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-2"></i> Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Suhodo 12 - a</strong></td>
+                        <td>Wisma</td>
+                        <td>
+                         -
+                        </td>
+                        <td><span class="badge bg-label-success me-1">Kosong</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
                                 ><i class="bx bx-edit-alt me-2"></i> Edit</a
                               >
                               <a class="dropdown-item" href="javascript:void(0);"
@@ -72,9 +121,9 @@
                       </tr>
                       <tr>
                         <td>
-                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Aula Muchtaruddin</strong>
+                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Suhodo 12 - c</strong>
                         </td>
-                        <td>Aula</td>
+                        <td>Wisma</td>
                         <td>
                           03-03-2024 | 05-03-2024
                         </td>
@@ -85,6 +134,37 @@
                               <i class="bx bx-dots-vertical-rounded"></i>
                             </button>
                             <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-info-circle me-2"></i> Detail</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-2"></i> Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Suhodo 12 - b</strong>
+                        </td>
+                        <td>Wisma</td>
+                        <td>
+                          03-03-2024 | 05-03-2024
+                        </td>
+                        <td><span class="badge bg-label-warning me-1">Digunakan</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-info-circle me-2"></i> Detail</a
+                              >
                               <a class="dropdown-item" href="javascript:void(0);"
                                 ><i class="bx bx-edit-alt me-2"></i> Edit</a
                               >
@@ -104,28 +184,11 @@
 </div>
 <!-- / Content -->
 
-<!-- Footer -->
-<footer class="content-footer footer bg-footer-theme">
-    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-        <div class="mb-2 mb-md-0">
-            ©
-            <script>
-                document.write(new Date().getFullYear());
-            </script>
-            , made with ❤️ by
-            <a href="#" target="_blank" class="footer-link fw-bolder">TIM MBKM 2024</a>
-        </div>
-        <div>
-            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+@endsection
 
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank"
-                class="footer-link me-4">Documentation</a>
+@section('script')
 
-            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
-                class="footer-link me-4">Support</a>
-        </div>
-    </div>
-</footer>
+<script src="{{ asset('/assets/vendor/libs/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('/assets/vendor/js/datatables.js') }}"></script>
 
 @endsection
