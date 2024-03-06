@@ -9,6 +9,7 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Home</h4>
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <div class="card">
@@ -41,6 +42,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
                             <p class="mb-4">
+                                Di dashboard diisi jumlah kamar dan ruangan yang tersedia untuk di pinjamkan
                                 You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
                                 your profile.
                             </p>

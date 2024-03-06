@@ -52,8 +52,6 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>
 
-    <link rel="stylesheet" href="{{ asset('/assets/vendor/libs/apex-charts/apex-charts.css') }}"/>
-
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -105,7 +103,6 @@
   <!-- endbuild -->
 
   <!-- Vendors JS -->
-  <script src="{{ asset('./assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
   @section('script')
   @show

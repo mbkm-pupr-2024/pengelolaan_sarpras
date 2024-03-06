@@ -83,16 +83,16 @@
       </ul>
     </li>
 
-    <li class="menu-item">
+    <li class="menu-item {{ ($route == 'transactions') ? 'active open' : '' }}">
       <a href="#" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
         <div data-i18n="Apps">Peminjaman</div>
       </a>
 
       <ul class="menu-sub">
-        <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
-            <div data-i18n="going">Ruangan Tersedia</div>
+        <li class="menu-item {{ ($route == 'transactions') ? 'active' : '' }}">
+          <a href="{{ route('transactions') }}" class="menu-link">
+            <div data-i18n="going">Add Peminjaman</div>
           </a>
         </li>
         <li class="menu-item">
@@ -103,15 +103,15 @@
       </ul>
     </li>
 
-    <li class="menu-item">
-      <a href="#" class="menu-link">
+    <li class="menu-item {{ ($route == 'wisma') ? 'active' : '' }}">
+      <a href="{{ route('wisma') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home"></i>
         <div data-i18n="room">Wisma</div>
       </a>
     </li>
 
     <li class="menu-item">
-      <a href="#" class="menu-link">
+      <a href="{{ route('calendar') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-calendar"></i>
         <div data-i18n="room">Kalender</div>
       </a>

@@ -31,9 +31,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/wisma', function () {
         return view('admin.index-wisma');
     })->name('wisma-admin');
+
     Route::get('/transactions', function () {
-        return view('admin.transactions');
-    });
+        return view('admin.transaction');
+    })->name('transactions');
     Route::get('/users', function () {
         return view('admin.users');
     });
@@ -47,4 +48,12 @@ Route::prefix('wisma')->group(function () {
     Route::get('/rooms', function () {
         return view('wisma.wisma-rooms');
     })->name('wisma-rooms');
+});
+
+Route::get('calendar', function () {
+    return view('calendar');
+})->name('calendar');
+
+Route::fallback(function () {
+    return view('errors.404');
 });
