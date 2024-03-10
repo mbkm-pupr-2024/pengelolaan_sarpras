@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Properties extends Model
+class Wisma extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'type',
-        'capacity'
+        'from',
+        'room',
+        'isOut'
     ];
-
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class, 'property_id');
-    }
 }

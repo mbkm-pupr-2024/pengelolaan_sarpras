@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,16 +29,14 @@ Route::prefix('admin')->group(function () {
     Route::patch('/properties/{id}', [PropertiesController::class, 'update'])->name('properties.update');
     Route::delete('/properties/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
 
-    Route::get('/wisma', function () {
-        return view('admin.index-wisma');
-    })->name('wisma-admin');
+    // Calon tidak terpakai
+    Route::get('/wisma', [TransactionController::class, 'wisma_show_admin'])->name('wisma-admin');
+    // ===============================
 
-    Route::get('/transactions', function () {
-        return view('admin.transaction');
-    })->name('transactions');
-    Route::get('/users', function () {
-        return view('admin.users');
-    });
+    Route::get('/transactions', [TransactionController::class, 'index'])
+            ->name('transactions');
+    Route::post('/transactions/wisma', [TransactionController::class, 'wisma_store'])
+            ->name('transactions.wisma.store');
 });
 
 // prefik untuk wisma
@@ -45,9 +44,8 @@ Route::prefix('wisma')->group(function () {
     Route::get('/', function () {
         return view('wisma.index');
     })->name('wisma');
-    Route::get('/rooms', function () {
-        return view('wisma.wisma-rooms');
-    })->name('wisma-rooms');
+
+    Route::get('/rooms', [TransactionController::class, 'wisma_show'])->name('wisma-rooms');
 });
 
 Route::get('calendar', function () {

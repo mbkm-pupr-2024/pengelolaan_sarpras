@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('wismas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('asal');
-            $table->integer('property_id')->foreign('property_id')->references('id')->on('properties');
-            $table->string('description')->nullable();
+            $table->string('from');
+            $table->string('room');
+            $table->boolean('isOut')->default(false);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('wismas');
     }
 };

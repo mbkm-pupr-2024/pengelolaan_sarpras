@@ -16,7 +16,7 @@
           <p class="card-text">
             Some quick example text to build on the card title and make up the bulk of the card's content.
           </p>
-          <a href="javascript:void(0)" class="btn btn-outline-info">Cek Ketersedian</a>
+          <a href="javascript:void(0)" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#roomsModal">Cek Ketersedian</a>
         </div>
       </div>
     </div>
@@ -122,6 +122,12 @@
   // add or remove seat from the array
   button.forEach((btn) => {
     btn.addEventListener('click', () => {
+
+      if (seats.length >= 4 && !seats.includes(btn.getAttribute('data-name'))) {
+        alert('You can only select 2 seats');
+        return;
+      }
+
       btn.classList.toggle('notAvailable');
       const seatName = btn.getAttribute('data-name');
       if (seats.includes(seatName)) {
@@ -137,3 +143,19 @@
   });
 </script>
 @endsection
+
+-- include('components.rooms-modal', [
+    'data' => [
+        'id' => '1',
+        'title' => 'Wisma Suhodo',
+        'seats' => [
+            'Suhodo 109',
+            'Suhodo 110',
+            'Suhodo 111',
+            'Suhodo 112',
+            'Suhodo 113',
+            'Suhodo 114',
+            'Suhodo 115',
+        ]
+    ]
+  ]); -- 

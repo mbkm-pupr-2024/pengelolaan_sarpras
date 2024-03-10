@@ -10,14 +10,14 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start',
-        'end',
+        'name',
+        'asal',
         'property_id',
         'description'
     ];
 
     public function properties()
     {
-        return $this->belongsTo(Properties::class);
+        return $this->belongsTo(Properties::class, 'property_id');
     }
 }

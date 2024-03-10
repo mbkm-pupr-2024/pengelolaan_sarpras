@@ -13,270 +13,208 @@
 
 @section('content')
 
+@if (session('success'))
+<x-toast bgColor="bg-success" title="Success">
+  {{ session('success') }}
+</x-toast>
+@endif
+
+@if (session('failed'))
+<x-toast bgColor="bg-danger" title="Failed">
+  {{ session('failed') }}
+</x-toast>
+@endif
+
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Peminjaman/</span> Tambah peminjaman</h4>
 
-  <div class="row">
-    <div class="col-xl">
-      <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Basic Layout</h5>
-          <small class="text-muted float-end">Default label</small>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label" for="basic-default-fullname">Full Name</label>
-              <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-default-company">Company</label>
-              <input type="text" class="form-control" id="basic-default-company" placeholder="ACME Inc." />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-default-email">Email</label>
-              <div class="input-group input-group-merge">
-                <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe"
-                  aria-label="john.doe" aria-describedby="basic-default-email2" />
-                <span class="input-group-text" id="basic-default-email2">@example.com</span>
-              </div>
-              <div class="form-text">You can use letters, numbers & periods</div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-default-phone">Phone No</label>
-              <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="658 799 8941" />
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-default-message">Message</label>
-              <textarea id="basic-default-message" class="form-control"
-                placeholder="Hi, Do you have a moment to talk Joe?"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </div>
-      </div>
+  <!-- <div>
+    <div class="alert alert-danger">
+      <h5 class="text-danger">Masukkan data dengan benar</h5>
+      <ul>
+        <li>Error error</li>
+        <li>Error error</li>
+        <li>Error error</li>
+        <li>{{ session('tab') }}</li>
+      </ul>
     </div>
-    <div class="col-xl">
-      <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="mb-0">Basic with Icons</h5>
-          <small class="text-muted float-end">Merged input group</small>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-fullname">Nama</label>
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
-                <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tulis disini ..."
-                  aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="name" />
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-company">Company</label>
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                <input type="text" id="basic-icon-default-company" class="form-control" placeholder="ACME Inc."
-                  aria-label="ACME Inc." aria-describedby="basic-icon-default-company2" />
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-email">Email</label>
-              <div class="input-group input-group-merge">
-                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                <input type="text" id="basic-icon-default-email" class="form-control" placeholder="john.doe"
-                  aria-label="john.doe" aria-describedby="basic-icon-default-email2" />
-                <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-              </div>
-              <div class="form-text">You can use letters, numbers & periods</div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-phone">Phone No</label>
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-phone2" class="input-group-text"><i class="bx bx-phone"></i></span>
-                <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
-                  placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label" for="basic-icon-default-message">Catatan tambahan</label>
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span>
-                <textarea id="basic-icon-default-message" class="form-control"
-                  placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?"
-                  aria-describedby="basic-icon-default-message2"></textarea>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  </div> -->
   <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title">Basic</h5>
-        </div>
-        <div class="card-body">
-          <div class="example-container">
-            <div class="example-content">
-              <input class="form-control flatpickr1" type="text" placeholder="Select Date..">
+    <div class="col-xl-6">
+      <div class="nav-align-top mb-4">
+        <ul class="nav nav-tabs nav-fill" role="tablist">
+          <li class="nav-item">
+            <button type="button" class="map nav-link {{ (session('tab')) ? '' : 'active' }}" role="tab"
+              data-bs-toggle="tab" data-bs-target="#navs-justified-home" aria-controls="navs-justified-home"
+              aria-selected="true">
+              <i class="tf-icons bx bx-home"></i> Ruangan
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="map nav-link {{ (session('tab')) ? 'active' : '' }}" role="tab"
+              data-bs-toggle="tab" data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile"
+              aria-selected="false">
+              <i class="tf-icons bx bx-user"></i> Wisma
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane fade {{ (session('tab')) ? '' : 'show active' }}" id="navs-justified-home"
+            role="tabpanel">
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Peminjaman Ruangan</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-fullname">Kegiatan</label>
+                    <div class="input-group input-group-merge">
+                      <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
+                      <input type="text" class="form-control" id="basic-icon-default-fullname"
+                        placeholder="Tulis disini ..." aria-label="John Doe"
+                        aria-describedby="basic-icon-default-fullname2" name="name" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label mb-3" for="basic-date-time">Tanggal mulai</label>
+                    <input class="form-control" type="date" placeholder="Select Date.." id="basic-date-time"
+                      name="start">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label mb-3" for="basic-date-time">Tanggal selesai</label>
+                    <input class="form-control" type="date" placeholder="Select Date.." id="basic-date-time" name="end">
+                  </div>
+                  <div class="mb-3">
+                    <label for="basic-select">Venue</label>
+                    <select class="js-states form-control" tabindex="-1" style="display: none; width: 100%"
+                      id="basic-select" name="property_id">
+                      <option value="" selected disabled>Pilih tempat</option>
+                      @foreach ($aulaKelas as $ak)
+                      <option value="{{ $ak->id }}">{{ $ak->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
             </div>
-            <div class="example-code">
-              <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="html-tab" data-bs-toggle="tab" data-bs-target="#htmlCode"
-                    type="button" role="tab" aria-controls="htmlCode" aria-selected="true">HTML</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="js-tab" data-bs-toggle="tab" data-bs-target="#jsCode" type="button"
-                    role="tab" aria-controls="jsCode" aria-selected="false">JS</button>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="htmlCode" role="tabpanel" aria-labelledby="html-tab">
-                  <pre><code class="html">&lt;input class=&quot;form-control flatpickr1&quot; type=&quot;text&quot; placeholder=&quot;Select Date..&quot;&gt;</code></pre>
-                </div>
-                <div class="tab-pane fade" id="jsCode" role="tabpanel" aria-labelledby="js-tab">
-                  <pre><code class="js">$(".flatpickr1").flatpickr();</code></pre>
-                </div>
+          </div>
+          <div class="tab-pane fade {{ (session('tab')) ? 'show active' : '' }}" id="navs-justified-profile"
+            role="tabpanel">
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Pendataan wisma</h5>
+              </div>
+              <div class="card-body">
+                <form action="{{ route('transactions.wisma.store') }}" method="POST">
+                  @csrf
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-fullname">Nama</label>
+                    <div class="input-group input-group-merge">
+                      <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
+                      <input type="text" class="form-control" id="basic-icon-default-fullname"
+                        placeholder="Tulis disini ..." aria-label="John Doe"
+                        aria-describedby="basic-icon-default-fullname2" name="name" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label" for="basic-icon-default-fullname">Asal</label>
+                    <div class="input-group input-group-merge">
+                      <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                          class="bx bx-location-plus"></i></span>
+                      <input type="text" class="form-control" id="basic-icon-default-fullname"
+                        placeholder="Tulis disini ..." aria-label="John Doe"
+                        aria-describedby="basic-icon-default-fullname2" name="asal" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="limit">Jumlah</label>
+                    <input id="limit" type="number" class="form-control" placeholder="Tulis disini ..."
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0"/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="basic-select">Wisma</label>
+                    <input id="rooms" type="text" class="form-control" placeholder="Cek ketersediaan..."
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" />
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title">DateTime</h5>
-        </div>
-        <div class="card-body">
-          <div class="example-container">
-            <div class="example-content">
-              <input class="form-control flatpickr2" type="text" placeholder="Select Date..">
-            </div>
-            <div class="example-code">
-              <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="html-tab4" data-bs-toggle="tab" data-bs-target="#htmlCode4"
-                    type="button" role="tab" aria-controls="htmlCode4" aria-selected="true">HTML</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="js-tab4" data-bs-toggle="tab" data-bs-target="#jsCode4" type="button"
-                    role="tab" aria-controls="jsCode4" aria-selected="false">JS</button>
-                </li>
-              </ul>
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="htmlCode4" role="tabpanel" aria-labelledby="html-tab4">
-                  <pre><code class="html">&lt;input class=&quot;form-control flatpickr2&quot; type=&quot;text&quot; placeholder=&quot;Select Date..&quot;&gt;</code></pre>
-                </div>
-                <div class="tab-pane fade" id="jsCode4" role="tabpanel" aria-labelledby="js-tab4">
-                  <pre><code class="js">$(".flatpickr2").flatpickr({ enableTime: true, dateFormat: "Y-m-d H:i",});</code></pre>
-                </div>
-              </div>
-            </div>
+    <div class="col-xl-6 d-none" id="hidden-select">
+      <div class="col-md-8 col-lg-8 mb-3">
+        <div class="card h-100 border border-info border-5 border-top-0 border-bottom-0 border-end-0">
+          <div class="card-body">
+            <h5 class="card-title">Wisma Suhodo</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-outline-info" data-bs-toggle="modal"
+              data-bs-target="#roomsSuhodo">Cek Ketersedian</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title">Basic</h5>
-        </div>
-        <div class="card-body">
-          <p class="card-description">Select2 was designed to be a replacement for the standard
-            <code>&lt;select&gt;</code> box that is displayed by the browser. By default it supports all options and
-            operations that are available in a standard select box, but with added flexibility.
-          </p>
-          <div class="example-container">
-            <div class="example-content">
-              <select class="js-states form-control" tabindex="-1" style="display: none; width: 100%">
-                <optgroup label="Alaskan/Hawaiian Time Zone">
-                  <option value="AK">Alaska</option>
-                  <option value="HI">Hawaii</option>
-                </optgroup>
-                <optgroup label="Pacific Time Zone">
-                  <option value="CA">California</option>
-                  <option value="NV">Nevada</option>
-                  <option value="OR">Oregon</option>
-                  <option value="WA">Washington</option>
-                </optgroup>
-                <optgroup label="Mountain Time Zone">
-                  <option value="AZ">Arizona</option>
-                  <option value="CO">Colorado</option>
-                  <option value="ID">Idaho</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="UT">Utah</option>
-                  <option value="WY">Wyoming</option>
-                </optgroup>
-                <optgroup label="Central Time Zone">
-                  <option value="AL">Alabama</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TX">Texas</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="WI">Wisconsin</option>
-                </optgroup>
-                <optgroup label="Eastern Time Zone">
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="IN">Indiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="OH">Ohio</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WV">West Virginia</option>
-                </optgroup>
-              </select>
-            </div>
+      <div class="col-md-8 col-lg-8 mb-3">
+        <div class="card h-100 border border-warning border-5 border-top-0 border-bottom-0 border-end-0">
+          <div class="card-body">
+            <h5 class="card-title">Wisma Surjono</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal"
+              data-bs-target="#roomsModal">Cek Ketersedian</a>
           </div>
         </div>
       </div>
+      <div class="col-md-8 col-lg-8 mb-3">
+        <div class="card h-100 border border-danger border-5 border-top-0 border-bottom-0 border-end-0">
+          <div class="card-body">
+            <h5 class="card-title">Paviliun</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="javascript:void(0)" class="btn btn-outline-danger" data-bs-toggle="modal"
+              data-bs-target="#roomsPaviliun">Cek Ketersedian</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+
   </div>
-</div>
 
-@endsection
-<!-- menggunakan onchange pada form yang akan di inputkan, inputan di sesuaikan dengan kebbutuhan masing - masing peminjaman tempat -->
+  @include('components.suhodo-modal', ['wisma' => $wisma])
+  @include('components.paviliun-modal', ['paviliun' => $paviliun])
 
-@section('script')
-<script src="{{ asset('/assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
-<script src="{{ asset('/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/js/select2.js') }}"></script>
-<script>
-  $(".flatpickr1").flatpickr();
-  $(".flatpickr2").flatpickr({ enableTime: true, dateFormat: "Y-m-d H:i", });
-</script>
-@endsection
+  @endsection
+  <!-- menggunakan onchange pada form yang akan di inputkan, inputan di sesuaikan dengan kebbutuhan masing - masing peminjaman tempat -->
+
+  @section('script')
+  <script src="{{ asset('/assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
+  <script src="{{ asset('/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script>
+  <script src="{{ asset('/assets/vendor/js/select2.js') }}"></script>
+  <script>
+    $(".flatpickr1").flatpickr();
+    // $(".flatpickr2").flatpickr({ enableTime: true, dateFormat: "Y-m-d H:i", });
+        // function to show or hide the hidden select rooms
+    const map = document.querySelectorAll('.map');
+    const hiddenSelect = document.getElementById('hidden-select');
+    const rooms = document.getElementById('rooms');
+
+    map.forEach((m) => {
+      m.addEventListener('click', () => {
+        if (map[1].classList.contains('active')) {
+          hiddenSelect.classList.remove('d-none');
+        } else {
+          hiddenSelect.classList.add('d-none');
+        }
+      });
+    });
+ 
+  </script>
+  @endsection

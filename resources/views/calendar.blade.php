@@ -58,7 +58,7 @@
         {
           groupId: 999,
           title: 'Repeating Event',
-          start: '2024-03-09T16:00:00'
+          start: '2024-03-09T16:00:00',
         },
         {
           groupId: 999,
@@ -68,7 +68,9 @@
         {
           title: 'Click for Google',
           url: 'http://google.com/',
-          start: '2024-03-28'
+          start: '2024-03-28',
+          backgroundColor: '#198754',
+          borderColor: '#198754'
         }
       ]
     });

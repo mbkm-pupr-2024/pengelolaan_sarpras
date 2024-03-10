@@ -25,7 +25,7 @@ class PropertiesController extends Controller
 
         if ($isValdate) {
             Properties::create([
-                'name' => $request->name,
+                'name' => ucfirst($request->name),
                 'type' => $request->type,
                 'capacity' => $request->capacity,
             ]);

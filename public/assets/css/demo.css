@@ -124,6 +124,7 @@ table th,td{
   display: inline-block;
   background-color: #efefef;
   border-radius: 5px;
+  cursor: pointer;;
 }
 
 #displaySeats{
@@ -334,7 +335,7 @@ span.flatpickr-weekday {
 .select2-container--default .select2-selection--single .select2-selection__arrow b::before {
   display: block;
   font-family: 'Material Icons';
-  content: "\e5cf";
+  content: "✔";
   width: 10px;
   height: 10px;
   position: absolute;
@@ -345,7 +346,7 @@ span.flatpickr-weekday {
 .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b::before {
   display: block;
   font-family: 'Material Icons';
-  content: "\e5ce";
+  content: "✖";
   width: 10px;
   height: 10px;
   position: absolute;

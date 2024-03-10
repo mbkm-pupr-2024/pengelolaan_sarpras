@@ -23,6 +23,8 @@
                 name="type">
                 <option value="kelas" {{ ($property->type == 'kelas') ? 'selected' : '' }}>Kelas</option>
                 <option value="aula" {{ ($property->type == 'aula') ? 'selected' : '' }}>Aula</option>
+                <option value="wisma" {{ ($property->type == 'wisma') ? 'selected' : '' }}>Wisma</option>
+                <option value="paviliun" {{ ($property->type == 'paviliun') ? 'selected' : '' }}>Paviliun</option>
               </select>
             </div>
             <div class="col mb-0">
