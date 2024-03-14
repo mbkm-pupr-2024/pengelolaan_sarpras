@@ -4,12 +4,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo</h5>
-          <div class="form-check form-switch mx-auto">
+          <!-- <div class="form-check form-switch mx-auto">
             <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             <label class="form-check-label" for="flexSwitchCheckDefault">
               Mode kosongkan ruangan
             </label>
-          </div>
+          </div> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -59,12 +59,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo</h5>
-          <div class="form-check form-switch mx-auto">
+          <!-- <div class="form-check form-switch mx-auto">
             <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             <label class="form-check-label" for="flexSwitchCheckDefault">
               Mode kosongkan ruangan
             </label>
-          </div>
+          </div> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -116,12 +116,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo</h5>
-          <div class="form-check form-switch mx-auto">
+          <!-- <div class="form-check form-switch mx-auto">
             <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             <label class="form-check-label" for="flexSwitchCheckDefault">
               Mode kosongkan ruangan
             </label>
-          </div>
+          </div> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -178,53 +178,4 @@
     //   }
     // });
 
-
-    // get all the button element
-    const button = document.querySelectorAll('td');
-    // convert php collection to js array
-    const seats = @json($wisma);
-    console.log(seats);
-    let limit = document.getElementById('limit').value;
-    const newSeats = [];
-    // check if seat is available from the server
-    for (let i = 0; i < button.length; i++) {
-      if (seats.includes((button[i].getAttribute('data-name')))) {
-        button[i].classList.add('notAvailable');
-      }
-    }
-
-    // onchange event to check if the limit is reached
-    document.getElementById('limit').addEventListener('input', () => {
-      limit = document.getElementById('limit').value;
-    });
-
-    // add or remove seat from the array
-    button.forEach((btn) => {
-      btn.addEventListener('click', () => {
-
-        if (newSeats.length >= limit && !btn.classList.contains('notAvailable')) {
-          alert(`You can only select ${limit} seats`);
-          return;
-        }
-
-        // if seats include on seats array then return
-        if (seats.includes(btn.getAttribute('data-name'))) {
-          alert('Seat not available');
-          return;
-        }
-
-        btn.classList.toggle('notAvailable');
-        const seatName = btn.getAttribute('data-name');
-        if (newSeats.includes(seatName)) {
-          const index = newSeats.indexOf(seatName);
-          if (index > -1) {
-            newSeats.splice(index, 1);
-          }
-        } else {
-          newSeats.push(seatName);
-        }
-        rooms.value = newSeats;
-        console.log(newSeats);
-      });
-    });
 </script>

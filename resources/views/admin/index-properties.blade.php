@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="table-responsive text-nowrap p-4">
-          <table id="datatable1" class="display table table-hover" style="width:100%">
+          <table id="datatable" class="display table table-hover" style="width:100%">
             <thead>
               <tr>
                 <th>Properti</th>

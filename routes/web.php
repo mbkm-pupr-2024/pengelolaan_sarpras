@@ -29,17 +29,22 @@ Route::prefix('admin')->group(function () {
     Route::patch('/properties/{id}', [PropertiesController::class, 'update'])->name('properties.update');
     Route::delete('/properties/{id}', [PropertiesController::class, 'destroy'])->name('properties.destroy');
 
-    // Calon tidak terpakai
+    // Data master semua penghuni wisma
     Route::get('/wisma', [TransactionController::class, 'wisma_show_admin'])->name('wisma-admin');
-    // ===============================
 
+    // Menyiapkan data untuk transaksi wisma
     Route::get('/transactions', [TransactionController::class, 'index'])
             ->name('transactions');
+    Route::get('/transactions/wisma', [TransactionController::class, 'wisma_show'])
+            ->name('transactions.wisma.show');
     Route::post('/transactions/wisma', [TransactionController::class, 'wisma_store'])
             ->name('transactions.wisma.store');
+    Route::delete('/transactions/wisma/destroy', [TransactionController::class, 'wisma_destroy'])
+            ->name('transactions.wisma.destroy');
 });
 
 // prefik untuk wisma
+// ========= Calon tidak digunakan =========
 Route::prefix('wisma')->group(function () {
     Route::get('/', function () {
         return view('wisma.index');
@@ -47,6 +52,7 @@ Route::prefix('wisma')->group(function () {
 
     Route::get('/rooms', [TransactionController::class, 'wisma_show'])->name('wisma-rooms');
 });
+// ========= Calon tidak digunakan =========
 
 Route::get('calendar', function () {
     return view('calendar');

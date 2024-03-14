@@ -2,7 +2,19 @@ $(document).ready(function () {
 
     "use strict";
 
-    $('#datatable1').DataTable();
+    $('#datatable').DataTable();
+
+    $('#datatable1').DataTable({
+        order: [[ 1, "asc" ]],
+        columns: [
+            { orderable: false },  // Kolom kedua tanpa sorting
+            null,
+            null,
+            null,
+            null,
+            { orderable: false },  // Kolom kedua tanpa sorting
+        ],
+    });
 
     $('#datatable2').DataTable({
         "scrollY": "300px",

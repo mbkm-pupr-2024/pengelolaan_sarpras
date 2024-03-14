@@ -77,7 +77,7 @@
         </li>
         <li class="menu-item {{ ($route == 'wisma-admin') ? 'active' :  '' }}">
           <a href="{{ route('wisma-admin') }}" class="menu-link">
-            <div data-i18n="idle">Wisma</div>
+            <div data-i18n="idle">Asrama & Paviliun</div>
           </a>
         </li>
       </ul>
@@ -92,22 +92,15 @@
       <ul class="menu-sub">
         <li class="menu-item {{ ($route == 'transactions') ? 'active' : '' }}">
           <a href="{{ route('transactions') }}" class="menu-link">
-            <div data-i18n="going">Add Peminjaman</div>
+            <div data-i18n="going">Ruangan</div>
           </a>
         </li>
         <li class="menu-item">
-          <a href="layouts-without-menu.html" class="menu-link">
-            <div data-i18n="idle">Sedang Digunakan</div>
+          <a href="{{ route('transactions.wisma.show') }}" class="menu-link">
+            <div data-i18n="idle">Asrama & Paviliun</div>
           </a>
         </li>
       </ul>
-    </li>
-
-    <li class="menu-item {{ ($route == 'wisma') ? 'active' : '' }}">
-      <a href="{{ route('wisma') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home"></i>
-        <div data-i18n="room">Wisma</div>
-      </a>
     </li>
 
     <li class="menu-item {{ ($route == 'calendar') ? 'active' : ''}}">

@@ -44,14 +44,7 @@
       <div class="nav-align-top mb-4">
         <ul class="nav nav-tabs nav-fill" role="tablist">
           <li class="nav-item">
-            <button type="button" class="map nav-link {{ (session('tab')) ? '' : 'active' }}" role="tab"
-              data-bs-toggle="tab" data-bs-target="#navs-justified-home" aria-controls="navs-justified-home"
-              aria-selected="true">
-              <i class="tf-icons bx bx-home"></i> Ruangan
-            </button>
-          </li>
-          <li class="nav-item">
-            <button type="button" class="map nav-link {{ (session('tab')) ? 'active' : '' }}" role="tab"
+            <button type="button" class="map nav-link active" role="tab"
               data-bs-toggle="tab" data-bs-target="#navs-justified-profile" aria-controls="navs-justified-profile"
               aria-selected="false">
               <i class="tf-icons bx bx-user"></i> Wisma
@@ -59,48 +52,7 @@
           </li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane fade {{ (session('tab')) ? '' : 'show active' }}" id="navs-justified-home"
-            role="tabpanel">
-            <div class="card mb-4">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Peminjaman Ruangan</h5>
-              </div>
-              <div class="card-body">
-                <form>
-                  <div class="mb-3">
-                    <label class="form-label" for="basic-icon-default-fullname">Kegiatan</label>
-                    <div class="input-group input-group-merge">
-                      <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
-                      <input type="text" class="form-control" id="basic-icon-default-fullname"
-                        placeholder="Tulis disini ..." aria-label="John Doe"
-                        aria-describedby="basic-icon-default-fullname2" name="name" />
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label mb-3" for="basic-date-time">Tanggal mulai</label>
-                    <input class="form-control" type="date" placeholder="Select Date.." id="basic-date-time"
-                      name="start">
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label mb-3" for="basic-date-time">Tanggal selesai</label>
-                    <input class="form-control" type="date" placeholder="Select Date.." id="basic-date-time" name="end">
-                  </div>
-                  <div class="mb-3">
-                    <label for="basic-select">Venue</label>
-                    <select class="js-states form-control" tabindex="-1" style="display: none; width: 100%"
-                      id="basic-select" name="property_id">
-                      <option value="" selected disabled>Pilih tempat</option>
-                      @foreach ($aulaKelas as $ak)
-                      <option value="{{ $ak->id }}">{{ $ak->name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade {{ (session('tab')) ? 'show active' : '' }}" id="navs-justified-profile"
+          <div class="tab-pane fade show active" id="navs-justified-profile"
             role="tabpanel">
             <div class="card mb-4">
               <div class="card-header d-flex justify-content-between align-items-center">
@@ -146,7 +98,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-6 d-none" id="hidden-select">
+    <div class="col-xl-6" id="hidden-select">
       <div class="col-md-8 col-lg-8 mb-3">
         <div class="card h-100 border border-info border-5 border-top-0 border-bottom-0 border-end-0">
           <div class="card-body">
@@ -191,6 +143,31 @@
   @include('components.suhodo-modal')
   @include('components.paviliun-modal')
 
+  <!-- Modal Alert -->
+  <div class="modal fade" id="modalAlert" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCenterTitle">Alert</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="message"></p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal trigger -->
+<button type="button" id="modal-alert" class="btn btn-primary invisible" data-bs-toggle="modal" data-bs-target="#modalAlert">
+  Launch demo modal
+</button>
+
+
+
+
+
   @endsection
   <!-- menggunakan onchange pada form yang akan di inputkan, inputan di sesuaikan dengan kebbutuhan masing - masing peminjaman tempat -->
 
@@ -202,22 +179,34 @@
     $(".flatpickr1").flatpickr();
     // $(".flatpickr2").flatpickr({ enableTime: true, dateFormat: "Y-m-d H:i", });
         // function to show or hide the hidden select rooms
-    const map = document.querySelectorAll('.map');
-    const hiddenSelect = document.getElementById('hidden-select');
-    const rooms = document.getElementById('rooms');
+    // const map = document.querySelectorAll('.map');
+    // const hiddenSelect = document.getElementById('hidden-select');
+    // const rooms = document.getElementById('rooms');
 
-    map.forEach((m) => {
-      m.addEventListener('click', () => {
-        if (map[1].classList.contains('active')) {
-          hiddenSelect.classList.remove('d-none');
-        } else {
-          hiddenSelect.classList.add('d-none');
-        }
-      });
-    });
+    // map.forEach((m) => {
+    //   m.addEventListener('click', () => {
+    //     if (map[1].classList.contains('active')) {
+    //       hiddenSelect.classList.remove('d-none');
+    //     } else {
+    //       hiddenSelect.classList.add('d-none');
+    //     }
+    //   });
+    // });
 
+    // Modal Alert
+    const modalAlert = document.getElementById('modal-alert');
+    let message = document.getElementById('message');
+    
+    // untuk alert bisa pake toast 
+
+    // const triggerAlert = (teks) => {
+    //   message.innerHTML = teks;
+    //   modalAlert.click();
+    // }
+
+    
     // Manage rooms 
-       // get all the button element
+    // get all the button element
     const button = document.querySelectorAll('td');
     // convert php collection to js array
     const seats = @json($wisma);
@@ -241,13 +230,15 @@
       btn.addEventListener('click', () => {
 
         if (newSeats.length >= limit && !btn.classList.contains('notAvailable')) {
-          alert(`You can only select ${limit} seats`);
+          alert('Anda hanya bisa memilih ' + limit + ' kamar');
+          triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
           return;
         }
 
         // if seats include on seats array then return
         if (seats.includes(btn.getAttribute('data-name'))) {
-          alert('Seat not available');
+          alert('Kamar ' + btn.getAttribute('data-name') + ' untuk saat ini tidak tersedia');
+          triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
           return;
         }
 

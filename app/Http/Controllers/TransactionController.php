@@ -11,15 +11,15 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $wisma = Wisma::where('room', 'LIKE', '%Suhodo%')->get();
+        $wisma = Wisma::all();
         $wisma = $wisma->map(function ($item) {
             return $item->room;
         });
 
-        $paviliun = Wisma::where('room', 'LIKE', '%Paviliun%')->get();
-        $paviliun = $paviliun->map(function ($item) {
-            return $item->room;
-        });
+        // $paviliun = Wisma::where('room', 'LIKE', '%Paviliun%')->get();
+        // $paviliun = $paviliun->map(function ($item) {
+        //     return $item->room;
+        // });
 
         $aulaKelas = Properties::whereIn('type', ['aula', 'kelas'])->get();
         // $paviliunWisma = Properties::whereIn('type', ['paviliun', 'wisma'])->get();
@@ -28,7 +28,7 @@ class TransactionController extends Controller
             'aulaKelas' => $aulaKelas,
             // 'paviliunWisma' => $paviliunWisma,
             'wisma' => $wisma,
-            'paviliun' => $paviliun,
+            // 'paviliun' => $paviliun,
         ]);
     }
 
@@ -53,31 +53,40 @@ class TransactionController extends Controller
             ]);
         }
         
-        // Transaction::create([
-        //     'name' => $request->name,
-        //     'asal' => $request->asal,
-        //     'property_id' => $request->property_id,
-        // ]);
-
         return redirect()->route('transactions');
     }
 
     public function wisma_show_admin() {
-        $transactions = Transaction::all();
+        $wisma = Wisma::all();
         return view('admin.index-wisma', [
-            'transactions' => $transactions
+            'transactions' => $wisma
         ]);
     }
 
     public function wisma_show()
     {
+        // $wisma = Wisma::all();
+        // $wisma = $wisma->map(function ($item) {
+        //     return $item->name;
+        // });
+        // dd($wisma);
+        // return view('wisma.wisma-rooms', [
+        //     'transactions' => $wisma
+        // ]);
         $wisma = Wisma::all();
         $wisma = $wisma->map(function ($item) {
-            return $item->name;
+            return $item->room;
         });
-        dd($wisma);
-        return view('wisma.wisma-rooms', [
-            'transactions' => $wisma
+
+        return view('admin.transaction-wisma', [
+            'wisma' => $wisma,
         ]);
+    }
+
+    public function wisma_destroy(Request $request)
+    {
+        $ids = explode(',', $request->selected);
+        Wisma::destroy($ids);
+        return redirect()->route('wisma-admin');
     }
 }
