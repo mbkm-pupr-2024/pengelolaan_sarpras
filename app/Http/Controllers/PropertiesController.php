@@ -15,6 +15,15 @@ class PropertiesController extends Controller
         ]);
     }
 
+    public function show()
+    {
+        $ruangan = Properties::whereIn('type', ['aula', 'kelas'])->get();
+
+        return view('admin.transaction', [
+            'aulaKelas' => $ruangan,
+        ]);
+    }
+
     public function store(Request $request)
     {
         $isValdate = $request->validate([

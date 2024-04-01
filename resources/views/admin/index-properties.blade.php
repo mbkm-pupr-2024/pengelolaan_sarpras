@@ -124,8 +124,6 @@
                 <option selected disabled>Open this select menu</option>
                 <option value="kelas">Kelas</option>
                 <option value="aula">Aula</option>
-                <option value="wisma">Wisma</option>
-                <option value="paviliun">Paviliun</option>
               </select>
             </div>
             <div class="col mb-0">

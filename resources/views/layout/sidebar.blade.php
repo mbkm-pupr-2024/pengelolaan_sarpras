@@ -83,19 +83,19 @@
       </ul>
     </li>
 
-    <li class="menu-item {{ ($route == 'transactions') ? 'active open' : '' }}">
+    <li class="menu-item {{ (strpos($route, 'transactions') !== false) ? 'active open' : '' }}">
       <a href="#" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
         <div data-i18n="Apps">Peminjaman</div>
       </a>
 
       <ul class="menu-sub">
-        <li class="menu-item {{ ($route == 'transactions') ? 'active' : '' }}">
-          <a href="{{ route('transactions') }}" class="menu-link">
+        <li class="menu-item {{ ($route == 'transactions.ruangan.show') ? 'active' : '' }}">
+          <a href="{{ route('transactions.ruangan.show') }}" class="menu-link">
             <div data-i18n="going">Ruangan</div>
           </a>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ ($route == 'transactions.wisma.show') ? 'active' : '' }}">
           <a href="{{ route('transactions.wisma.show') }}" class="menu-link">
             <div data-i18n="idle">Asrama & Paviliun</div>
           </a>

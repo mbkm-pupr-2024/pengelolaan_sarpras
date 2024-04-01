@@ -28,17 +28,17 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Peminjaman/</span> Tambah peminjaman</h4>
 
-  <!-- <div>
-    <div class="alert alert-danger">
-      <h5 class="text-danger">Masukkan data dengan benar</h5>
-      <ul>
-        <li>Error error</li>
-        <li>Error error</li>
-        <li>Error error</li>
-        <li>{{ session('tab') }}</li>
-      </ul>
-    </div>
-  </div> -->
+  @if($errors->any())
+  <div class="alert alert-danger">
+    <h5 class="text-danger">Masukkan data dengan benar</h5>
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+  
   <div class="row">
     <div class="col-xl-6">
       <div class="nav-align-top mb-4">
@@ -119,7 +119,7 @@
               Some quick example text to build on the card title and make up the bulk of the card's content.
             </p>
             <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal"
-              data-bs-target="#roomsModal">Cek Ketersedian</a>
+              data-bs-target="#roomsSurjono">Cek Ketersedian</a>
           </div>
         </div>
       </div>
@@ -141,6 +141,7 @@
   </div>
 
   @include('components.suhodo-modal')
+  @include('components.surjono-modal')
   @include('components.paviliun-modal')
 
   <!-- Modal Alert -->

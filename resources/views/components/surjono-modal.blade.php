@@ -4,12 +4,6 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Surjono</h5>
-          <div class="form-check form-switch mx-auto">
-            <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-            <label class="form-check-label" for="flexSwitchCheckDefault">
-              Mode kosongkan ruangan
-            </label>
-          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

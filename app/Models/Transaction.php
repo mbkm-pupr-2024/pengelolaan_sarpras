@@ -10,9 +10,13 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'asal',
+        'instansi',
+        'kegiatan',
+        'start',
+        'end',
+        'color',
         'property_id',
+        'status',
         'description'
     ];
 

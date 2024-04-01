@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\TransactionController;
 
@@ -15,9 +16,8 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -32,9 +32,18 @@ Route::prefix('admin')->group(function () {
     // Data master semua penghuni wisma
     Route::get('/wisma', [TransactionController::class, 'wisma_show_admin'])->name('wisma-admin');
 
-    // Menyiapkan data untuk transaksi wisma
-    Route::get('/transactions', [TransactionController::class, 'index'])
-            ->name('transactions');
+    // Menyiapkan data untuk transaksi ruangan dan wisma
+    Route::get('/transactions/ruangan', [TransactionController::class, 'ruangan_show'])
+            ->name('transactions.ruangan.show');
+    Route::get('/transactions/ruangan/list', [TransactionController::class, 'ruangan_detail'])
+            ->name('transactions.ruangan.detail');
+    Route::post('/transactions/ruangan', [TransactionController::class, 'ruangan_store'])
+            ->name('transactions.ruangan.store');
+    Route::post('/transactions/ruangan/update/{id}', [TransactionController::class, 'ruangan_update'])
+            ->name('transactions.ruangan.update');
+    Route::delete('/transactions/ruangan', [TransactionController::class, 'ruangan_destroy'])
+            ->name('transactions.ruangan.destroy');
+
     Route::get('/transactions/wisma', [TransactionController::class, 'wisma_show'])
             ->name('transactions.wisma.show');
     Route::post('/transactions/wisma', [TransactionController::class, 'wisma_store'])
@@ -54,9 +63,7 @@ Route::prefix('wisma')->group(function () {
 });
 // ========= Calon tidak digunakan =========
 
-Route::get('calendar', function () {
-    return view('calendar');
-})->name('calendar');
+Route::get('calendar', [TransactionController::class, 'calendar'])->name('calendar');
 
 Route::fallback(function () {
     return view('errors.404');

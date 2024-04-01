@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('asal');
-            $table->integer('property_id')->foreign('property_id')->references('id')->on('properties');
+            $table->string('instansi');
+            $table->string('kegiatan');
+            $table->date('start');
+            $table->date('end');
+            $table->string('color')->nullable();
+            $table->foreignId('property_id')->constrained('properties', 'id')->noActionOnDelete();
+            $table->string('status')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

@@ -9,33 +9,23 @@
         <div id="seat-results">
           <table id="displaySeats" data-seats="seat">
             <tr>
-              <td id="seat-2" data-name="Paviliun 48CD - 1">Paviliun 48CD - 1</td>
               <td id="seat-2" data-name="Paviliun 48CD - 3">Paviliun 48CD - 3</td>
-            </tr>
-            <tr>
-              <td id="seat-1" data-name="Paviliun 48CD - 2">Paviliun 48CD - 2</td>
-            </tr>
-            <tr>
-              <td id="seat-1" data-name="Paviliun 48EF - 1">Paviliun 48EF - 1</td>
+              <td class="invisible">&nbsp;</td>
               <td id="seat-2" data-name="Paviliun 48EF - 3">Paviliun 48EF - 3</td>
-            </tr>
-            <tr>
-              <td id="seat-2" data-name="Paviliun 48EF - 2">Paviliun 48EF - 2</td>
-            </tr>
-            <tr>
+              <td class="invisible">&nbsp;</td>
               <td id="seat-1" data-name="Paviliun 48G - 1">Paviliun 48G - 1</td>
-              <td id="seat-2" data-name="Paviliun 48G - 2">Paviliun 48G - 2</td>
-            </tr>
-            <tr>
               <td id="seat-1" data-name="Paviliun 48H - 1">Paviliun 48H - 1</td>
-              <td id="seat-2" data-name="Paviliun 48H - 2">Paviliun 48H - 2</td>
-            </tr>
-            <tr>
               <td id="seat-1" data-name="Paviliun 48I - 1">Paviliun 48I - 1</td>
-              <td id="seat-2" data-name="Paviliun 48I - 2">Paviliun 48I - 2</td>
+              <td id="seat-1" data-name="Paviliun 48J - 1">Paviliun 48J - 1</td>
             </tr>
             <tr>
-              <td id="seat-1" data-name="Paviliun 48J - 1">Paviliun 48J - 1</td>
+              <td id="seat-2" data-name="Paviliun 48CD - 1">Paviliun 48CD - 1</td>
+              <td id="seat-1" data-name="Paviliun 48CD - 2">Paviliun 48CD - 2</td>
+              <td id="seat-1" data-name="Paviliun 48EF - 1">Paviliun 48EF - 1</td>
+              <td id="seat-2" data-name="Paviliun 48EF - 2">Paviliun 48EF - 2</td>
+              <td id="seat-2" data-name="Paviliun 48G - 2">Paviliun 48G - 2</td>
+              <td id="seat-2" data-name="Paviliun 48H - 2">Paviliun 48H - 2</td>
+              <td id="seat-2" data-name="Paviliun 48I - 2">Paviliun 48I - 2</td>
               <td id="seat-2" data-name="Paviliun 48J - 2">Paviliun 48J - 2</td>
             </tr>
           </table>
