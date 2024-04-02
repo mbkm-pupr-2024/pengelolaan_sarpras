@@ -36,36 +36,32 @@
                 <th style="width: 10px">✔</th>
                 <th>Nama</th>
                 <th>Ruangan</th>
-                <th>Tanggal</th>
+                <th>Asal</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-              @foreach ($transactions as $t )
+              @foreach ($transactions as $wisma )
               <tr>
                 <th>
-                  <input type="checkbox" class="form-check-input" value="{{ $t->id }}">
+                  <input type="checkbox" class="form-check-input" value="{{ $wisma->id }}">
                 </th>
-                <td><strong>{{ ucfirst($t->name) }}</strong></td>
-                <td>{{ $t->room }}</td>
+                <td><strong>{{ ucfirst($wisma->name) }}</strong></td>
+                <td>{{ $wisma->room }}</td>
                 <td>
-                  -
+                  {{ $wisma->from}}
                 </td>
                 <td><span class="badge bg-label-danger me-1">Ditempati</span></td>
                 <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> Detail</a>
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
-                    </div>
-                  </div>
+                  <button class="btn btn-success btn-sm" data-bs-toggle="modal"
+                    data-bs-target="#modalCenter{{ $wisma->id }}"><i class="bx bx-edit-alt me-2"></i>Edit
+                  </button>
                 </td>
               </tr>
+
+              @include('components.edit-modal')
+
               @endforeach
             </tbody>
           </table>
@@ -73,8 +69,9 @@
             @csrf
             @method('DELETE')
             <input type="text" class="d-none" id="selected" name="selected">
-            <input type="button" class="btn btn-danger d-none" id="delete" value="Delete" data-bs-toggle="modal" data-bs-target="#modalDeleteRooms">
-            
+            <input type="button" class="btn btn-danger d-none" id="delete" value="Delete" data-bs-toggle="modal"
+              data-bs-target="#modalDeleteRooms">
+
             <!-- Confirm modal -->
             <div class="modal fade" id="modalDeleteRooms" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -95,7 +92,7 @@
                 </div>
               </div>
             </div>
-            
+
           </form>
         </div>
       </div>
@@ -111,30 +108,30 @@
 <script src="{{ asset('/assets/vendor/libs/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('/assets/vendor/js/datatables.js') }}"></script>
 <script>
-    const check = document.querySelectorAll('.form-check-input');
-    const deleteBtn = document.getElementById('delete');
-    let formSelected = document.getElementById('selected');
-    let selected = [];
+  const check = document.querySelectorAll('.form-check-input');
+  const deleteBtn = document.getElementById('delete');
+  let formSelected = document.getElementById('selected');
+  let selected = [];
 
-    check.forEach((c) => {
-      c.addEventListener('change', (e) => {
-        let value = parseInt(e.target.value)
-        if (e.target.checked) {
-          selected.push(value);
-        } else {
-          selected = selected.filter((s) => s !== value);
-        }
-        formSelected.value = selected;
-        console.log(formSelected);
-        
-        if (selected.length > 0) {
-          deleteBtn.classList.remove('d-none');
-        } else {
-          deleteBtn.classList.add('d-none');
-        }
-      });
+  check.forEach((c) => {
+    c.addEventListener('change', (e) => {
+      let value = parseInt(e.target.value)
+      if (e.target.checked) {
+        selected.push(value);
+      } else {
+        selected = selected.filter((s) => s !== value);
+      }
+      formSelected.value = selected;
+      console.log(formSelected);
+
+      if (selected.length > 0) {
+        deleteBtn.classList.remove('d-none');
+      } else {
+        deleteBtn.classList.add('d-none');
+      }
     });
-    
+  });
+
 </script>
 
 @endsection

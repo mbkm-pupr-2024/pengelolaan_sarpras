@@ -48,6 +48,8 @@ Route::prefix('admin')->group(function () {
             ->name('transactions.wisma.show');
     Route::post('/transactions/wisma', [TransactionController::class, 'wisma_store'])
             ->name('transactions.wisma.store');
+    Route::patch('/transactions/wisma/{id}', [TransactionController::class, 'wisma_update'])
+            ->name('transactions.wisma.update');
     Route::delete('/transactions/wisma/destroy', [TransactionController::class, 'wisma_destroy'])
             ->name('transactions.wisma.destroy');
 });

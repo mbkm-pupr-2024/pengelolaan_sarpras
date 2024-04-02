@@ -185,6 +185,26 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
                 ->with('success', 'Data berhasil ditambahkan');
     }
 
+    public function wisma_update(Request $request, $id)
+    {
+        $isValidate = $request->validate([
+            'name' => 'required|string|max:32',
+            'asal' => 'required|string|max:32',
+        ]);
+
+        if (!$isValidate) {
+            return redirect()->route('transactions.wisma.show')->with('failed', 'Data tidak valid');
+        }
+
+        Wisma::where('id', $id)->update([
+            'name' => ucfirst($request->name),
+            'from' => ucfirst($request->asal),
+        ]);
+
+        return redirect()->route('wisma-admin')
+                ->with('success', 'Data berhasil diubah');
+    }
+
     public function wisma_show_admin() {
         $wisma = Wisma::all();
         return view('admin.index-wisma', [

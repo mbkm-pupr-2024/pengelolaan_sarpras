@@ -34,16 +34,13 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-@else
+@elseif(isset($t))
 <div class="modal fade" id="modalCenter{{ $t->id }}" tabindex="-1" data-bs-backdrop="static" role="dialog"
   aria-labelledby="addEventLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -89,8 +86,52 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@else
+<div class="modal fade" id="modalCenter{{ $wisma->id }}" tabindex="-1" data-bs-backdrop="static" role="dialog"
+  aria-labelledby="addEventLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <form action="{{ route('transactions.wisma.update', $wisma->id) }}" method="POST">
+        @csrf
+        @method('PATCH')
+        <div class="modal-header">
+          <h5 class="modal-title" id="addEventLabel">Edit Penghuni Wisma</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label" for="basic-icon-default-fullname">Nama</label>
+            <div class="input-group input-group-merge">
+              <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
+              <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tulis disini ..."
+                aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="name"
+                value="{{ $wisma->name }}" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="basic-icon-default-fullname">Asal</label>
+            <div class="input-group input-group-merge">
+              <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                  class="bx bx-location-plus"></i></span>
+              <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tulis disini ..."
+                aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="asal"
+                value="{{ $wisma->from }}" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="basic-select">Wisma</label>
+            <input id="rooms" type="text" class="form-control" placeholder="Cek ketersediaan..." aria-label="John Doe"
+              aria-describedby="basic-icon-default-fullname2" disabled value="{{ $wisma->room }}" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Edit</button>
         </div>
       </form>
     </div>
