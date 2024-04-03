@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-fullscreen" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono</h5>
+          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 1</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -42,6 +42,8 @@
           </button>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
               data-bs-target="#roomsSurjono2">Lantai 2</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#roomsSurjono3">Lantai 3</button>
         </div>
       </div>
     </div>
@@ -52,13 +54,13 @@
     <div class="modal-dialog modal-fullscreen" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono</h5>
-          <div class="form-check form-switch mx-auto">
+          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 2</h5>
+          <!-- <div class="form-check form-switch mx-auto">
             <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             <label class="form-check-label" for="flexSwitchCheckDefault">
               Mode kosongkan ruangan
             </label>
-          </div>
+          </div> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -109,13 +111,13 @@
     <div class="modal-dialog modal-fullscreen" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono</h5>
-          <div class="form-check form-switch mx-auto">
+          <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 3</h5>
+          <!-- <div class="form-check form-switch mx-auto">
             <input id="delete-mode" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             <label class="form-check-label" for="flexSwitchCheckDefault">
               Mode kosongkan ruangan
             </label>
-          </div>
+          </div> -->
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

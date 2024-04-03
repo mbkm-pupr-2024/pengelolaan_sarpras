@@ -25,10 +25,20 @@
 @endif
 
 <div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Data master/</span> Asrama & Paviliun</h4>
   <div class="row">
     <div class="col-lg-12 mb-4 order-0">
       <div class="card">
-        <h5 class="card-header">Wisma & Paviliun</h5>
+        <div class="d-flex justify-content-between">
+          <div class="head">
+            <h5 class="card-header">Asrama & Paviliun</h5>
+          </div>
+          <div class="my-auto pe-4">
+            <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary">
+              <span class="tf-icons bx bx-plus-medical bx-sm"></span>
+            </a>
+          </div>
+        </div>
         <div class="table-responsive text-nowrap p-4">
           <table id="datatable1" class="table">
             <thead>
