@@ -63,11 +63,11 @@
           <div class="row">
             <div class="col mb-3">
               <label for="start" class="form-label">Mulai</label>
-              <input type="date" class="form-control" id="start" name="start" required value="{{ $t->start }}">
+              <input type="date" class="form-control" id="start" name="start" disabled value="{{ $t->start }}">
             </div>
             <div class="col mb-3">
               <label for="end" class="form-label">Selesai</label>
-              <input type="date" class="form-control" id="end" name="end" required value="{{ $t->end }}">
+              <input type="date" class="form-control" id="end" name="end" disabled value="{{ $t->end }}">
             </div>
           </div>
           <div class="mb-3">

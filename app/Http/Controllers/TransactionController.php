@@ -101,8 +101,6 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $isValidate = $request->validate([
             'office' => 'required|string|max:32',
             'event' => 'required|string|max:32',
-            'start' => 'required|date',
-            'end' => 'required|date',
             'venue' => 'required',
             'description' => 'nullable|string',
         ]);
@@ -111,17 +109,9 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             return redirect()->route('transactions.ruangan.show')->withInput($request->all());
         }
 
-        $transactions = $this->check_available_ruangan($request->start, $request->end, $request->venue);
-        if ($transactions->count() > 0) {
-            return redirect()->route('transactions.ruangan.show')
-                ->with('failed', 'Ruangan sudah terpakai');
-        }
-
         $transaction = Transaction::find($id);
         $transaction->instansi = ucfirst($request->office);
         $transaction->kegiatan = ucfirst($request->event);
-        $transaction->start = $request->start;
-        $transaction->end = $request->end;
         $transaction->property_id = $request->venue;
         $transaction->description = $request->description;
         $transaction->save();
