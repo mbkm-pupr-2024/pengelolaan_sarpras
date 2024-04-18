@@ -10,26 +10,55 @@
           <div id="seat-results">
             <table id="displaySeats" data-seats="seat">
               <tr>
-                <td id="seat-109" data-name="Surjono 109">Surjono 109</td>
-                <td id="seat-110" data-name="Surjono 110">Surjono 110</td>
-                <td id="seat-111" data-name="Surjono 111">Surjono 111</td>
-                <td id="seat-112" data-name="Surjono 112">Surjono 112</td>
-                <td id="seat-113" data-name="Surjono 113">Surjono 113</td>
-                <td id="seat-114" data-name="Surjono 114">Surjono 114</td>
-                <td id="seat-115" data-name="Surjono 115">Surjono 115</td>
+                <td id="seat-103" data-name="Surjono 103-b">103 - b</td>
+                <td id="seat-105" data-name="Surjono 105-b">105 - b</td>
+                <td id="seat-107" data-name="Surjono 107-b">107 - b</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-111" data-name="Surjono 111-b">111 - b</td>
+                <td id="seat-113" data-name="Surjono 113-b">113 - b</td>
+                <td id="seat-115" data-name="Surjono 115-b">115 - b</td>
+                <td id="seat-117" data-name="Surjono 117-b">117 - b</td>
+              </tr>
+              <tr>
+                <td id="seat-103" data-name="Surjono 103-a">103 - a</td>
+                <td id="seat-105" data-name="Surjono 105-a">105 - a</td>
+                <td id="seat-107" data-name="Surjono 107-a">107 - a</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-111" data-name="Surjono 111-a">111 - a</td>
+                <td id="seat-113" data-name="Surjono 113-a">113 - a</td>
+                <td id="seat-115" data-name="Surjono 115-a">115 - a</td>
+                <td id="seat-117" data-name="Surjono 117-a">117 - a</td>
               </tr>
               <tr>
                 <td class="space">&nbsp;</td>
               </tr>
               <tr>
-                <td id="seat-116" data-name="Surjono 116">Surjono 116</td>
-                <td id="seat-117" data-name="Surjono 117">Surjono 117</td>
-                <td id="seat-118" data-name="Surjono 118">Surjono 118</td>
-                <td id="seat-119" data-name="Surjono 119">Surjono 119</td>
-                <td id="seat-120" data-name="Surjono 120">Surjono 120</td>
-                <td id="seat-121" data-name="Surjono 121">Surjono 121</td>
-                <td id="seat-122" data-name="Surjono 122">Surjono 122</td>
-                <td id="seat-123" data-name="Surjono 123">Surjono 123</td>
+                <td id="seat-102" data-name="Surjono 102-a">102 - a</td>
+                <td id="seat-104" data-name="Surjono 104-a">104 - a</td>
+                <td id="seat-106" data-name="Surjono 106-a">106 - a</td>
+                <td id="seat-108" data-name="Surjono 108-a">108 - a</td>
+                <td id="seat-110" data-name="Surjono 110-a">110 - a</td>
+                <td id="seat-112" data-name="Surjono 112-a">112 - a</td>
+                <td id="seat-114" data-name="Surjono 114-a">114 - a</td>
+                <td id="seat-116" data-name="Surjono 116-a">116 - a</td>
+                <td id="seat-118" data-name="Surjono 118-a">118 - a</td>
+                <td id="seat-120" data-name="Surjono 120-a">120 - a</td>
+                <td id="seat-122" data-name="Surjono 122-a">122 - a</td>
+                <td id="seat-124" data-name="Surjono 124-a">124 - a</td>
+              </tr>
+              <tr>
+                <td id="seat-102" data-name="Surjono 102-b">102 - b</td>
+                <td id="seat-104" data-name="Surjono 104-b">104 - b</td>
+                <td id="seat-106" data-name="Surjono 106-b">106 - b</td>
+                <td id="seat-108" data-name="Surjono 108-b">108 - b</td>
+                <td id="seat-110" data-name="Surjono 110-b">110 - b</td>
+                <td id="seat-112" data-name="Surjono 112-b">112 - b</td>
+                <td id="seat-114" data-name="Surjono 114-b">114 - b</td>
+                <td id="seat-116" data-name="Surjono 116-b">116 - b</td>
+                <td id="seat-118" data-name="Surjono 118-b">118 - b</td>
+                <td id="seat-120" data-name="Surjono 120-b">120 - b</td>
+                <td id="seat-122" data-name="Surjono 122-b">122 - b</td>
+                <td id="seat-124" data-name="Surjono 124-b">124 - b</td>
               </tr>
             </table>
             <div style="text-align: center; color: #9a031e; font-weight: bold;">
@@ -67,26 +96,51 @@
           <div id="seat-results">
             <table id="displaySeats" data-seats="seat">
               <tr>
-                <td id="seat-209" data-name="Surjono 209">Surjono 209</td>
-                <td id="seat-210" data-name="Surjono 210">Surjono 210</td>
-                <td id="seat-211" data-name="Surjono 211">Surjono 211</td>
-                <td id="seat-212" data-name="Surjono 212">Surjono 212</td>
-                <td id="seat-213" data-name="Surjono 213">Surjono 213</td>
-                <td id="seat-214" data-name="Surjono 214">Surjono 214</td>
-                <td id="seat-215" data-name="Surjono 215">Surjono 215</td>
+                <td id="seat-201" data-name="Surjono 201-b">201 - b</td>
+                <td id="seat-203" data-name="Surjono 203-b">203 - b</td>
+                <td id="seat-205" data-name="Surjono 205-b">205 - b</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-207" data-name="Surjono 207-b">207 - b</td>
+                <td id="seat-209" data-name="Surjono 209-b">209 - b</td>
+                <td id="seat-211" data-name="Surjono 211-b">211 - b</td>
+                <td id="seat-213" data-name="Surjono 213-b">213 - b</td>
+              </tr>
+              <tr>
+                <td id="seat-201" data-name="Surjono 201-a">201 - a</td>
+                <td id="seat-203" data-name="Surjono 203-a">203 - a</td>
+                <td id="seat-205" data-name="Surjono 205-a">205 - a</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-207" data-name="Surjono 207-a">207 - a</td>
+                <td id="seat-209" data-name="Surjono 209-a">209 - a</td>
+                <td id="seat-211" data-name="Surjono 211-a">211 - a</td>
+                <td id="seat-213" data-name="Surjono 213-a">213 - a</td>
               </tr>
               <tr>
                 <td class="space">&nbsp;</td>
               </tr>
               <tr>
-                <td id="seat-216" data-name="Surjono 216">Surjono 216</td>
-                <td id="seat-217" data-name="Surjono 217">Surjono 217</td>
-                <td id="seat-218" data-name="Surjono 218">Surjono 218</td>
-                <td id="seat-219" data-name="Surjono 219">Surjono 219</td>
-                <td id="seat-220" data-name="Surjono 220">Surjono 220</td>
-                <td id="seat-221" data-name="Surjono 221">Surjono 221</td>
-                <td id="seat-222" data-name="Surjono 222">Surjono 222</td>
-                <td id="seat-223" data-name="Surjono 223">Surjono 223</td>
+                <td id="seat-202" data-name="Surjono 202-a">202 - a</td>
+                <td id="seat-204" data-name="Surjono 204-a">204 - a</td>
+                <td id="seat-206" data-name="Surjono 206-a">206 - a</td>
+                <td id="seat-208" data-name="Surjono 208-a">208 - a</td>
+                <td id="seat-210" data-name="Surjono 210-a">210 - a</td>
+                <td id="seat-212" data-name="Surjono 212-a">212 - a</td>
+                <td id="seat-214" data-name="Surjono 214-a">214 - a</td>
+                <td id="seat-216" data-name="Surjono 216-a">216 - a</td>
+                <td id="seat-218" data-name="Surjono 218-a">218 - a</td>
+                <td id="seat-220" data-name="Surjono 220-a">220 - a</td>
+              </tr>
+              <tr>
+                <td id="seat-202" data-name="Surjono 202-b">202 - b</td>
+                <td id="seat-204" data-name="Surjono 204-b">204 - b</td>
+                <td id="seat-206" data-name="Surjono 206-b">206 - b</td>
+                <td id="seat-208" data-name="Surjono 208-b">208 - b</td>
+                <td id="seat-210" data-name="Surjono 210-b">210 - b</td>
+                <td id="seat-212" data-name="Surjono 212-b">212 - b</td>
+                <td id="seat-214" data-name="Surjono 214-b">214 - b</td>
+                <td id="seat-216" data-name="Surjono 216-b">216 - b</td>
+                <td id="seat-218" data-name="Surjono 218-b">218 - b</td>
+                <td id="seat-220" data-name="Surjono 220-b">220 - b</td>
               </tr>
             </table>
             <div style="text-align: center; color: #9a031e; font-weight: bold;">
@@ -124,26 +178,43 @@
           <div id="seat-results">
             <table id="displaySeats" data-seats="seat">
               <tr>
-                <td id="seat-309" data-name="Surjono 309">Surjono 309</td>
-                <td id="seat-310" data-name="Surjono 310">Surjono 310</td>
-                <td id="seat-311" data-name="Surjono 311">Surjono 311</td>
-                <td id="seat-312" data-name="Surjono 312">Surjono 312</td>
-                <td id="seat-313" data-name="Surjono 313">Surjono 313</td>
-                <td id="seat-314" data-name="Surjono 314">Surjono 314</td>
-                <td id="seat-315" data-name="Surjono 315">Surjono 315</td>
+                <td id="seat-301" data-name="Surjono 301-b">301 - b</td>
+                <td id="seat-303" data-name="Surjono 303-b">303 - b</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-305" data-name="Surjono 305-b">305 - b</td>
+                <td id="seat-307" data-name="Surjono 307-b">307 - b</td>
+                <td id="seat-309" data-name="Surjono 309-b">309 - b</td>
+                <td id="seat-311" data-name="Surjono 311-b">311 - b</td>
+              </tr>
+              <tr>
+                <td id="seat-301" data-name="Surjono 301-a">301 - a</td>
+                <td id="seat-303" data-name="Surjono 303-a">303 - a</td>
+                <td class="space">&nbsp;</td>
+                <td id="seat-305" data-name="Surjono 305-a">305 - a</td>
+                <td id="seat-307" data-name="Surjono 307-a">307 - a</td>
+                <td id="seat-309" data-name="Surjono 309-a">309 - a</td>
+                <td id="seat-311" data-name="Surjono 311-a">311 - a</td>
               </tr>
               <tr>
                 <td class="space">&nbsp;</td>
               </tr>
               <tr>
-                <td id="seat-316" data-name="Surjono 316">Surjono 316</td>
-                <td id="seat-317" data-name="Surjono 317">Surjono 317</td>
-                <td id="seat-318" data-name="Surjono 318">Surjono 318</td>
-                <td id="seat-319" data-name="Surjono 319">Surjono 319</td>
-                <td id="seat-320" data-name="Surjono 320">Surjono 320</td>
-                <td id="seat-321" data-name="Surjono 321">Surjono 321</td>
-                <td id="seat-322" data-name="Surjono 322">Surjono 322</td>
-                <td id="seat-323" data-name="Surjono 323">Surjono 323</td>
+                <td id="seat-302" data-name="Surjono 302-a">302 - a</td>
+                <td id="seat-304" data-name="Surjono 304-a">304 - a</td>
+                <td id="seat-306" data-name="Surjono 306-a">306 - a</td>
+                <td id="seat-308" data-name="Surjono 308-a">308 - a</td>
+                <td id="seat-310" data-name="Surjono 310-a">310 - a</td>
+                <td id="seat-312" data-name="Surjono 312-a">312 - a</td>
+                <td id="seat-316" data-name="Surjono 316-a">316 - a</td>
+              </tr>
+              <tr>
+                <td id="seat-302" data-name="Surjono 302-b">302 - b</td>
+                <td id="seat-304" data-name="Surjono 304-b">304 - b</td>
+                <td id="seat-306" data-name="Surjono 306-b">306 - b</td>
+                <td id="seat-308" data-name="Surjono 308-b">308 - b</td>
+                <td id="seat-310" data-name="Surjono 310-b">310 - b</td>
+                <td id="seat-312" data-name="Surjono 312-b">312 - b</td>
+                <td id="seat-316" data-name="Surjono 316-b">316 - b</td>
               </tr>
             </table>
             <div style="text-align: center; color: #9a031e; font-weight: bold;">

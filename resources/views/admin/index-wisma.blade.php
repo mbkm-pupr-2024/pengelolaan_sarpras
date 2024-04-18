@@ -62,7 +62,11 @@
                 <td>
                   {{ $wisma->from}}
                 </td>
-                <td><span class="badge bg-label-danger me-1">Ditempati</span></td>
+                <td>
+                  <span class="badge bg-label-{{ (!$wisma->isOut)? 'danger':'success' }} me-1">
+                    {{ (!$wisma->isOut)? 'Ditempati':'Selesai' }}
+                  </span> 
+                </td>
                 <td>
                   <button class="btn btn-success btn-sm" data-bs-toggle="modal"
                     data-bs-target="#modalCenter{{ $wisma->id }}"><i class="bx bx-edit-alt me-2"></i>Edit

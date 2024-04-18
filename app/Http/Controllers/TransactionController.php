@@ -149,12 +149,21 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
  \_____/\___/ |__/|_______/ |__/ |__/ |__/ \_______/
 // ======================================================== */
 
+    public function check_expired() {
+        $transactions = Wisma::where('end', '<', now()->toDateString())->get();
+        $transactions->each(function ($item) {
+            $item->isOut = 1;
+            $item->save();
+        });
+    }
+
     public function wisma_store(Request $request)
     {
         $isValidate = $request->validate([
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
             'rooms' => 'required|string',
+            'end' => 'required|date',
         ]);
 
         if (!$isValidate) {
@@ -168,6 +177,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
                 'name' => ucfirst($request->name),
                 'from' => ucfirst($request->asal),
                 'room' => $room,
+                'end' => $request->end,
             ]);
         }
         
@@ -196,6 +206,8 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
     }
 
     public function wisma_show_admin() {
+        $this->check_expired();
+
         $wisma = Wisma::all();
         return view('admin.index-wisma', [
             'transactions' => $wisma
@@ -204,12 +216,20 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
 
     public function wisma_show()
     {
-        $wisma = Wisma::all();
+        $this->check_expired();
+
+        $wisma = Wisma::where('isOut', 0)->get();
         $wisma = $wisma->map(function ($item) {
             return $item->room;
         });
 
-        return view('admin.transaction-wisma', [
+        if (auth()->user()->role == 'admin') {
+            return view('admin.transaction-wisma', [
+                'wisma' => $wisma,
+            ]);
+        }
+
+        return view('wisma.index', [
             'wisma' => $wisma,
         ]);
     }

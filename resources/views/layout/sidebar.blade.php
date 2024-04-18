@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
   <div class="app-brand demo">
-    <a href="index.html" class="app-brand-link">
+    <a href="{{ route('dashboard') }}" class="app-brand-link">
       <span class="app-brand-logo demo">
         <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -57,12 +57,14 @@
   @php $menus = ['properties', 'wisma-admin']; $route = Route::currentRouteName(); @endphp
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item {{ ($route == '') ? 'active' : '' }}">
+    <li class="menu-item {{ ($route == 'dashboard') ? 'active' : '' }}">
       <a href="/" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
+
+    @if (Auth::user()->role == 'admin')
     <li class="menu-item {{ (in_array($route, $menus))? 'active open' : '' }}">
       <a href="#" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-coin-stack"></i>
@@ -82,7 +84,6 @@
         </li>
       </ul>
     </li>
-
     <li class="menu-item {{ (strpos($route, 'transactions') !== false) ? 'active open' : '' }}">
       <a href="#" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
@@ -102,11 +103,21 @@
         </li>
       </ul>
     </li>
+    @endif
+
+    @if(Auth::user()->role == 'user')
+    <li class="menu-item {{ ($route == 'wisma_show_user') ? 'active' : '' }}">
+      <a href="{{ route('wisma_show_user') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-building-house"></i>
+        <div data-i18n="Apps">Asrama & Paviliun</div>
+      </a>
+    </li>
+    @endif
 
     <li class="menu-item {{ ($route == 'calendar') ? 'active' : ''}}">
       <a href="{{ route('calendar') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-calendar"></i>
-        <div data-i18n="room">Kalender</div>
+        <div data-i18n="room">Kalender Kegiatan</div>
       </a>
     </li>
   </ul>

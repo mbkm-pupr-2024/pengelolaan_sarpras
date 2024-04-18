@@ -142,7 +142,7 @@
             }
           },
           listEventButton: {
-            text: 'List Event',
+            text: 'Kegiatan',
             click: function () {
               window.location.href = '/admin/transactions/ruangan/list';
             }

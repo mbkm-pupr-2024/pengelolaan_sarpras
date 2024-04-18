@@ -14,7 +14,7 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Home</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Dashboard</h4>
     <div class="row">
         <div class="col-lg-6  mb-4 order-0">
             <div class="card">
@@ -46,7 +46,9 @@
                         </tbody>
                         @endforeach
                     </table>
+                    @if (Auth::user()->role == 'admin')
                     <a href="{{ route('transactions.ruangan.detail') }}" class="btn btn-success">More</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -73,7 +75,9 @@
                                     }}</h4>
                             </div>
                         </div>
+                        @if(Auth::user()->role == 'admin')
                         <a href="{{ route('wisma-admin') }}" class="btn btn-danger">More</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -101,7 +105,9 @@
                                 </h4>
                             </div>
                         </div>
+                        @if(Auth::user()->role == 'admin')
                         <a href="{{ route('wisma-admin') }}" class="btn btn-warning">More</a>
+                        @endif
                     </div>
                 </div>
             </div>

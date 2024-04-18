@@ -16,11 +16,15 @@ class DashboardController extends Controller
             ->get();
 
         $paviliunTotal = 14;
-        $paviliun = Wisma::where('room', 'like', '%pav%')->count();
+        $paviliun = Wisma::where('room', 'like', '%pav%')
+                    ->Where('isOut', 0)
+                    ->count();
         $paviliunAvailable = $paviliunTotal - $paviliun;
 
-        $wismaTotal = 90;
-        $wisma = Wisma::where('room', 'not like', '%pav%')->count();
+        $wismaTotal = 206;
+        $wisma = Wisma::where('room', 'not like', '%pav%')
+                ->Where('isOut', 0)
+                ->count();
         $wismaAvailable = $wismaTotal - $wisma;
 
         return view('welcome', [

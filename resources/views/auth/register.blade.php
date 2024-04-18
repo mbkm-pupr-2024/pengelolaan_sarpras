@@ -8,7 +8,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Login</title>
+  <title>Register</title>
 
   <meta name="description" content="" />
 
@@ -48,37 +48,37 @@
   <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
       <div class="authentication-inner">
-        <!-- Register -->
+        <!-- Register Card -->
         <div class="card">
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ ucfirst('Monas') }} 🔥</span>
-              </a>
+              <span class="app-brand-text demo text-body fw-bolder">Monas 🔥</span>
             </div>
-
-            @if($errors->any())
-            <div class="alert alert-danger">
-              <span>{{ $errors->first() }}</span>
-            </div>
-            @endif
-
             <!-- /Logo -->
-            <form id="formAuthentication" class="mb-3" action="{{ route('login-store') }}" method="POST">
+            <h4 class="mb-4">Register</h4>
+
+            <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
               @csrf
               <div class="mb-3">
-                <label for="email" class="form-label">Username</label>
-                <input type="text" class="form-control" id="email" name="name"
-                  placeholder="Enter your email or username" autofocus />
+                <label for="username" class="form-label">Username</label>
+                <!-- error message -->
+                @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input type="text" class="form-control" id="username" name="name" placeholder="Enter your username"
+                  autofocus />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <!-- error message -->
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
               </div>
               <div class="mb-3 form-password-toggle">
-                <div class="d-flex justify-content-between">
-                  <label class="form-label" for="password">Password</label>
-                  <a href="auth-forgot-password-basic.html">
-                    <small>Forgot Password?</small>
-                  </a>
-                </div>
+                <label class="form-label" for="password">Password</label>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
@@ -86,26 +86,28 @@
                   <span class="input-group-text cursor-pointer" id="eyeBtn"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
+
               <div class="mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="remember-me" />
-                  <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
+                  <label class="form-check-label" for="terms-conditions">
+                    I agree to
+                    <a href="javascript:void(0);">privacy policy & terms</a>
+                  </label>
                 </div>
               </div>
-              <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-              </div>
+              <button class="btn btn-primary d-grid w-100">Sign up</button>
             </form>
 
             <p class="text-center">
-              <span>New on our platform?</span>
-              <a href="auth-register-basic.html">
-                <span>Create an account</span>
+              <span>Already have an account?</span>
+              <a href="auth-login-basic.html">
+                <span>Sign in instead</span>
               </a>
             </p>
           </div>
         </div>
-        <!-- /Register -->
+        <!-- Register Card -->
       </div>
     </div>
   </div>
@@ -131,6 +133,10 @@
   </script>
   <script src="{{ asset('/assets/vendor/js/bootstrap.js') }}"></script>
   <script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+</body>
+
+</html>cript>
+<script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 </body>
 
 </html>

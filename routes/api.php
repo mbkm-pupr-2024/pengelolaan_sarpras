@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // =============== EVENTS API ================================
 Route::get('/events', [TransactionController::class, 'events']);
-Route::get('/check', [TransactionController::class, 'check_available_ruangan']);
+// Route::get('/check', [TransactionController::class, 'check_available_ruangan']);

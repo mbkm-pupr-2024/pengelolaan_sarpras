@@ -13,6 +13,7 @@ class Wisma extends Model
         'name',
         'from',
         'room',
-        'isOut'
+        'isOut',
+        'end',
     ];
 }
