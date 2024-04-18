@@ -178,27 +178,7 @@
   <!-- menggunakan onchange pada form yang akan di inputkan, inputan di sesuaikan dengan kebbutuhan masing - masing peminjaman tempat -->
 
   @section('script')
-  <script src="{{ asset('/assets/vendor/libs/flatpickr/flatpickr.js') }}"></script>
-  <script src="{{ asset('/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script>
-  <script src="{{ asset('/assets/vendor/js/select2.js') }}"></script>
   <script>
-    $(".flatpickr1").flatpickr();
-    // $(".flatpickr2").flatpickr({ enableTime: true, dateFormat: "Y-m-d H:i", });
-        // function to show or hide the hidden select rooms
-    // const map = document.querySelectorAll('.map');
-    // const hiddenSelect = document.getElementById('hidden-select');
-    // const rooms = document.getElementById('rooms');
-
-    // map.forEach((m) => {
-    //   m.addEventListener('click', () => {
-    //     if (map[1].classList.contains('active')) {
-    //       hiddenSelect.classList.remove('d-none');
-    //     } else {
-    //       hiddenSelect.classList.add('d-none');
-    //     }
-    //   });
-    // });
-
     // Modal Alert
     const modalAlert = document.getElementById('modal-alert');
     let message = document.getElementById('message');

@@ -55,7 +55,6 @@
     const button = document.querySelectorAll('td');
     // convert php collection to js array
     const seats = @json($wisma);
-    console.log(seats);
     // check if seat is available from the server
     for (let i = 0; i < button.length; i++) {
       if (seats.includes((button[i].getAttribute('data-name')))) {
