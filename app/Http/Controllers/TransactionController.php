@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Properties;
 use App\Models\Wisma;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\WismaExports;
 
 class TransactionController extends Controller
 {
@@ -239,6 +241,12 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $ids = explode(',', $request->selected);
         Wisma::destroy($ids);
         return redirect()->route('wisma-admin');
+    }
+
+    public function wisma_export()
+    {
+        $now = now()->toDateString();
+        return Excel::download(new WismaExports, "$now-rekap-wisma.xlsx");
     }
 
 /* ========================================================

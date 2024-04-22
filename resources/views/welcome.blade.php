@@ -115,29 +115,61 @@
     </div>
     <div class="row">
         <div class="col-lg-6 mb-4 order-0">
-            <div class="card">
-                <div class="d-flex align-items-end row">
-                    <div class="col-sm-7">
-                        <div class="card-body">
-                            <h1>Today events</h1>
-                            <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                            <p class="mb-4">
-                                Di dashboard diisi jumlah kamar dan ruangan yang tersedia untuk di pinjamkan
-                                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                                your profile.
-                            </p>
-
-                            <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach ( $events as $key => $e )
+                    <div class="carousel-item {{ ($key == 0)? 'active' : '' }}">
+                        <div class="card">
+                            <div class="d-flex align-items-end row">
+                                <div class="col p-5">
+                                    <div class="card-body text-center">
+                                        <h1 class="text-dark">{{ ucfirst($e->kegiatan) }}</h1>
+                                        <h5 class="card-title text-primary">{{ date("d-m-Y", strtotime($e->start)) }} |
+                                            {{ date("d-m-Y", strtotime($e->end)) }}</h5>
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="text-dark mb-1">{{ $e->instansi }}</h6>
+                                            <h6 class="text-dark mb-1">{{ $e->properties->name }}</h6>
+                                        </div>
+                                        <p class="mb-4 text-start">
+                                            <b>Deskripsi: </b>
+                                            {{ $e->description }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('transactions.ruangan.detail') }}" class="btn btn-primary">Lihat
+                                        selengkapnya</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 text-center text-sm-left">
-                        <div class="card-body pb-0 px-0 px-md-4">
-                            <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140"
-                                alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                                data-app-light-img="illustrations/man-with-laptop-light.png" />
+                    @endforeach
+                    <!-- <div class="carousel-item">
+                        <div class="card">
+                            <div class="d-flex align-items-end row">
+                                <div class="col p-5">
+                                    <div class="card-body text-center">
+                                        <h1 class="text-dark">Pelatihan fogging</h1>
+                                        <h5 class="card-title text-primary">2024-04-13 | 2024-04-16</h5>
+                                        <h6 class="text-dark mb-1 text-start">Balai Sebelah</h6>
+                                        <p class="mb-4 text-start">
+                                            Di dashboard diisi jumlah kamar dan ruangan yang tersedia untuk di pinjamkan
+                                            You have done <span class="fw-bold">72%</span> more sales today. Check your
+                                            new badge in
+                                            your profile.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+                <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-primary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
             </div>
         </div>
         <div class="col-lg-6 mb-4 order-0">
@@ -156,79 +188,80 @@
             </div>
         </div>
     </div>
-    <!-- / Content -->
+</div>
+<!-- / Content -->
 
-    <!-- / Layout wrapper -->
+<!-- / Layout wrapper -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
 
-    @endsection
+@endsection
 
-    @section('script')
-    <script src="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.js') }}"></script>
-    <script>
+@section('script')
+<script src="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.js') }}"></script>
+<script>
 
-        const venue = document.getElementById('venue');
+    const venue = document.getElementById('venue');
 
-        // check available ruangan berdasarkan tanggal
-        // venue.addEventListener('change', async function() {
-        //   const start = document.getElementById('start').value;
-        //   const end = document.getElementById('end').value;
-        //   const propertyId = venue.value;
+    // check available ruangan berdasarkan tanggal
+    // venue.addEventListener('change', async function() {
+    //   const start = document.getElementById('start').value;
+    //   const end = document.getElementById('end').value;
+    //   const propertyId = venue.value;
 
-        //   const response = await fetch(`/api/check?start=${start}&end=${end}&property_id=${propertyId}`);
-        //   const data = await response.json();
+    //   const response = await fetch(`/api/check?start=${start}&end=${end}&property_id=${propertyId}`);
+    //   const data = await response.json();
 
-        //   if (data.length > 0) {
-        //     alert('Ruangan sudah terpakai');
-        //     venue.value = '';
-        //   }
-        // });
+    //   if (data.length > 0) {
+    //     alert('Ruangan sudah terpakai');
+    //     venue.value = '';
+    //   }
+    // });
 
-        const getEvents = async () => {
-            const response = await fetch('/api/events');
-            const data = await response.json();
-            return data;
-        }
+    const getEvents = async () => {
+        const response = await fetch('/api/events');
+        const data = await response.json();
+        return data;
+    }
 
-        document.addEventListener('DOMContentLoaded', async function () {
-            var calendarEl = document.getElementById('calendar');
-            const btnTrig = document.getElementById('btn-trigger');
-            const startDate = document.getElementById('start');
-            const endDate = document.getElementById('end');
+    document.addEventListener('DOMContentLoaded', async function () {
+        var calendarEl = document.getElementById('calendar');
+        const btnTrig = document.getElementById('btn-trigger');
+        const startDate = document.getElementById('start');
+        const endDate = document.getElementById('end');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialDate: new Date(),
-                // customButtons: {
-                // addEventButton: {
-                //     text: 'Add Event',
-                //     click: function() {
-                //       btnTrig.click();
-                //     }
-                //   }
-                // },
-                // headerToolbar: {
-                //   left: 'addEventButton',
-                //   center: 'title',
-                // },
-                // selectable: true,
-                // eventClick: function(arg) {
-                //   console.log(arg.event.title);
-                // },
-                // select: function(arg) {
-                //   // convert to dete input value 
-                //   console.log(arg.start);
-                //   // startDate.value = new Date(arg.start).toISOString().slice(0, 16);
-                //   // endDate.value = new Date(arg.end).toISOString().slice(0, 16);
-                //   btnTrig.click();
-                // },
-                // businessHours: true,
-                // dayMaxEvents: true, // allow "more" link when too many events
-                events: await getEvents(),
-            });
-
-            calendar.render();
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialDate: new Date(),
+            // customButtons: {
+            // addEventButton: {
+            //     text: 'Add Event',
+            //     click: function() {
+            //       btnTrig.click();
+            //     }
+            //   }
+            // },
+            // headerToolbar: {
+            //   left: 'addEventButton',
+            //   center: 'title',
+            // },
+            // selectable: true,
+            // eventClick: function(arg) {
+            //   console.log(arg.event.title);
+            // },
+            // select: function(arg) {
+            //   // convert to dete input value 
+            //   console.log(arg.start);
+            //   // startDate.value = new Date(arg.start).toISOString().slice(0, 16);
+            //   // endDate.value = new Date(arg.end).toISOString().slice(0, 16);
+            //   btnTrig.click();
+            // },
+            // businessHours: true,
+            // dayMaxEvents: true, // allow "more" link when too many events
+            events: await getEvents(),
         });
-    </script>
-    @endsection
+
+        calendar.render();
+    });
+</script>
+@endsection

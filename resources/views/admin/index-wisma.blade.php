@@ -34,8 +34,11 @@
             <h5 class="card-header">Asrama & Paviliun</h5>
           </div>
           <div class="my-auto pe-4">
-            <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary">
+            <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary me-3">
               <span class="tf-icons bx bx-plus-medical bx-sm"></span>
+            </a>
+            <a href="{{ route('transactions.wisma.export') }}" class="btn btn-info">
+              <span class="tf-icons bx bx-cloud-download bx-sm"></span>
             </a>
           </div>
         </div>
@@ -47,6 +50,7 @@
                 <th>Nama</th>
                 <th>Ruangan</th>
                 <th>Asal</th>
+                <th>Selesai pada</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -62,6 +66,7 @@
                 <td>
                   {{ $wisma->from}}
                 </td>
+                <td>{{ $wisma->end }}</td>
                 <td>
                   <span class="badge bg-label-{{ (!$wisma->isOut)? 'danger':'success' }} me-1">
                     {{ (!$wisma->isOut)? 'Ditempati':'Selesai' }}

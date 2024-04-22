@@ -75,9 +75,6 @@
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
                   <label class="form-label" for="password">Password</label>
-                  <a href="auth-forgot-password-basic.html">
-                    <small>Forgot Password?</small>
-                  </a>
                 </div>
                 <div class="input-group input-group-merge">
                   <input type="password" id="password" class="form-control" name="password"
@@ -99,7 +96,7 @@
 
             <p class="text-center">
               <span>New on our platform?</span>
-              <a href="auth-register-basic.html">
+                <a href="{{ route('register') }}">
                 <span>Create an account</span>
               </a>
             </p>

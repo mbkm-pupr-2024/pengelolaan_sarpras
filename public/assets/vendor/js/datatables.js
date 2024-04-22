@@ -12,6 +12,7 @@ $(document).ready(function () {
             null,
             null,
             null,
+            null,
             { orderable: false },  // Kolom kedua tanpa sorting
         ],
     });

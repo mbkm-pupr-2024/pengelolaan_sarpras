@@ -136,7 +136,7 @@
         initialDate: new Date(),
         customButtons: {
           addEventButton: {
-            text: 'Add Event',
+            text: 'Tambah',
             click: function () {
               btnTrig.click();
             }

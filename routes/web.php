@@ -55,6 +55,8 @@ Route::group(['middleware' => 'auth'], function() {
                         ->name('transactions.wisma.update');
                 Route::delete('/transactions/wisma/destroy', [TransactionController::class, 'wisma_destroy'])
                         ->name('transactions.wisma.destroy');
+                Route::get('/transactions/wisma/export', [TransactionController::class, 'wisma_export'])
+                        ->name('transactions.wisma.export');
             });
         });
         Route::group(['middleware' => 'checkRole:user'], function() {
