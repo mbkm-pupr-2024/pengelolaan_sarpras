@@ -115,6 +115,8 @@
     </div>
     <div class="row">
         <div class="col-lg-6 mb-4 order-0">
+            <!-- check if carousel is not empty -->
+            @if (count($events) != 0)
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @foreach ( $events as $key => $e )
@@ -171,6 +173,7 @@
                     <span class="visually-hidden">Next</span>
                 </a>
             </div>
+            @endif
         </div>
         <div class="col-lg-6 mb-4 order-0">
             <div class="card">
