@@ -37,7 +37,7 @@
             <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary me-3">
               <span class="tf-icons bx bx-plus-medical bx-sm"></span>
             </a>
-            <a href="{{ route('transactions.wisma.export') }}" class="btn btn-info">
+            <a href="{{ route('transactions.wisma.export') }}" class="btn btn-success">
               <span class="tf-icons bx bx-cloud-download bx-sm"></span>
             </a>
           </div>
@@ -50,7 +50,8 @@
                 <th>Nama</th>
                 <th>Ruangan</th>
                 <th>Asal</th>
-                <th>Selesai pada</th>
+                <th>Mulai</th>
+                <th>Selesai</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -66,7 +67,8 @@
                 <td>
                   {{ $wisma->from}}
                 </td>
-                <td>{{ $wisma->end }}</td>
+                <td>{{ date("d-m-Y", strtotime($wisma->start)) }}</td>
+                <td>{{ date("d-m-Y", strtotime($wisma->end)) }}</td>
                 <td>
                   <span class="badge bg-label-{{ (!$wisma->isOut)? 'danger':'success' }} me-1">
                     {{ (!$wisma->isOut)? 'Ditempati':'Selesai' }}

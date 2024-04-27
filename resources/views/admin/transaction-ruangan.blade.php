@@ -7,7 +7,6 @@
 @endsection
 
 @section('head')
-<!-- <link href="{{ asset('/assets/vendor/libs/select2/css/select2.min.css') }}" rel="stylesheet"> -->
 <link href="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.css') }}" rel="stylesheet">
 @endsection
 
@@ -113,11 +112,8 @@
 
 
   @endsection
-  <!-- menggunakan onchange pada form yang akan di inputkan, inputan di sesuaikan dengan kebbutuhan masing - masing peminjaman tempat -->
 
   @section('script')
-  <!-- <script src="{{ asset('/assets/vendor/libs/select2/js/select2.full.min.js') }}"></script> -->
-  <!-- <script src="{{ asset('/assets/vendor/js/select2.js') }}"></script> -->
   <script src="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.js') }}"></script>
   <script>
     const getEvents = async () => {
@@ -142,7 +138,7 @@
             }
           },
           listEventButton: {
-            text: 'Kegiatan',
+            text: 'List Kegiatan',
             click: function () {
               window.location.href = '/admin/transactions/ruangan/list';
             }
@@ -156,13 +152,6 @@
         eventClick: function (arg) {
           console.log(arg.event.title);
         },
-        // select: function(arg) {
-        //   // convert to dete input value 
-        //   console.log(arg.start);
-        //   // startDate.value = new Date(arg.start).toISOString().slice(0, 16);
-        //   // endDate.value = new Date(arg.end).toISOString().slice(0, 16);
-        //   btnTrig.click();
-        // },
         businessHours: true,
         dayMaxEvents: true, // allow "more" link when too many events
         events: await getEvents(),

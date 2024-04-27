@@ -28,9 +28,21 @@
   <div class="row">
     <div class="col-lg-12 mb-4 order-0">
       <div class="card">
-        <h5 class="card-header">Daftar Kegiatan</h5>
+        <div class="d-flex justify-content-between">
+          <div class="head">
+            <h5 class="card-header">Peminjaman Ruangan</h5>
+          </div>
+          <div class="my-auto pe-4">
+            <a href="{{ route('transactions.ruangan.show') }}" class="btn btn-primary me-3">
+              <span class="tf-icons bx bx-plus-medical bx-sm"></span>
+            </a>
+            <a href="{{ route('transactions.ruangan.export') }}" class="btn btn-success">
+              <span class="tf-icons bx bx-cloud-download bx-sm"></span>
+            </a>
+          </div>
+        </div>
         <div class="table-responsive text-nowrap p-4">
-          <table id="datatable1" class="table">
+          <table id="datatable2" class="table">
             <thead>
               <tr>
                 <th style="width: 10px">✔</th>
@@ -38,7 +50,6 @@
                 <th>Kegiatan</th>
                 <th>Ruangan</th>
                 <th>Tanggal</th>
-                <!-- <th style="width: 100px">Keterangan</th> -->
                 <th>Actions</th>
               </tr>
             </thead>
@@ -53,8 +64,7 @@
                 <td>
                   {{ $t->properties->name }}
                 </td>
-                <td><span class="me-1">{{ $t->start .' | '. $t->end }}</span></td>
-                <!-- <td>{{ $t->description }}</td> -->
+                <td><span class="me-1">{{ date("d-m-Y", strtotime($t->start)) .' | '. date("d-m-Y", strtotime($t->end)) }}</span></td>
                 <td>
                   <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                     data-bs-target="#modalCenter{{ $t->id }}">

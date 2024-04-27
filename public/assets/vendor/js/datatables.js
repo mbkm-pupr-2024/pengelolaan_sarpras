@@ -13,14 +13,13 @@ $(document).ready(function () {
             null,
             null,
             null,
+            null,
             { orderable: false },  // Kolom kedua tanpa sorting
         ],
     });
 
     $('#datatable2').DataTable({
-        "scrollY": "300px",
-        "scrollCollapse": true,
-        "paging": false
+        order: [[ 1, "asc" ]],
     });
 
     $('#datatable3').DataTable({

@@ -39,13 +39,15 @@ Route::group(['middleware' => 'auth'], function() {
                 Route::get('/transactions/ruangan', [TransactionController::class, 'ruangan_show'])
                         ->name('transactions.ruangan.show');
                 Route::get('/transactions/ruangan/list', [TransactionController::class, 'ruangan_detail'])
-                        ->name('transactions.ruangan.detail');
+                        ->name('ruangan.detail');
                 Route::post('/transactions/ruangan', [TransactionController::class, 'ruangan_store'])
                         ->name('transactions.ruangan.store');
                 Route::post('/transactions/ruangan/update/{id}', [TransactionController::class, 'ruangan_update'])
                         ->name('transactions.ruangan.update');
                 Route::delete('/transactions/ruangan', [TransactionController::class, 'ruangan_destroy'])
                         ->name('transactions.ruangan.destroy');
+                Route::get('/transactions/ruangan/export', [TransactionController::class, 'ruangan_export'])
+                        ->name('transactions.ruangan.export');
 
                 Route::get('/transactions/wisma', [TransactionController::class, 'wisma_show'])
                         ->name('transactions.wisma.show');

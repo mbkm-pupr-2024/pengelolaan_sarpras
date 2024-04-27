@@ -85,10 +85,17 @@
                     <input id="limit" type="number" class="form-control" placeholder="Tulis disini ..."
                       aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0"/>
                   </div>
-                  <div class="mb-3">
-                    <label for="end">Sampai</label>
-                    <input id="end" type="date" class="form-control" placeholder=""
-                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="end"/>
+                  <div class="row">
+                    <div class="col mb-3">
+                      <label for="start">Mulai</label>
+                      <input id="start" type="date" class="form-control" placeholder=""
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="start"/>
+                    </div>
+                    <div class="col mb-3">
+                      <label for="end">Selesai</label>
+                      <input id="end" type="date" class="form-control" placeholder=""
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="end"/>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="basic-select">Wisma</label>

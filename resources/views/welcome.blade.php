@@ -47,7 +47,7 @@
                         @endforeach
                     </table>
                     @if (Auth::user()->role == 'admin')
-                    <a href="{{ route('transactions.ruangan.detail') }}" class="btn btn-success">More</a>
+                    <a href="{{ route('ruangan.detail') }}" class="btn btn-success">More</a>
                     @endif
                 </div>
             </div>
@@ -137,7 +137,7 @@
                                             {{ $e->description }}
                                         </p>
                                     </div>
-                                    <a href="{{ route('transactions.ruangan.detail') }}" class="btn btn-primary">Lihat
+                                    <a href="{{ route('ruangan.detail') }}" class="btn btn-primary">Lihat
                                         selengkapnya</a>
                                 </div>
                             </div>
@@ -194,11 +194,6 @@
 </div>
 <!-- / Content -->
 
-<!-- / Layout wrapper -->
-
-<!-- Core JS -->
-<!-- build:js assets/vendor/js/core.js -->
-
 @endsection
 
 @section('script')
@@ -206,21 +201,6 @@
 <script>
 
     const venue = document.getElementById('venue');
-
-    // check available ruangan berdasarkan tanggal
-    // venue.addEventListener('change', async function() {
-    //   const start = document.getElementById('start').value;
-    //   const end = document.getElementById('end').value;
-    //   const propertyId = venue.value;
-
-    //   const response = await fetch(`/api/check?start=${start}&end=${end}&property_id=${propertyId}`);
-    //   const data = await response.json();
-
-    //   if (data.length > 0) {
-    //     alert('Ruangan sudah terpakai');
-    //     venue.value = '';
-    //   }
-    // });
 
     const getEvents = async () => {
         const response = await fetch('/api/events');
@@ -236,31 +216,6 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialDate: new Date(),
-            // customButtons: {
-            // addEventButton: {
-            //     text: 'Add Event',
-            //     click: function() {
-            //       btnTrig.click();
-            //     }
-            //   }
-            // },
-            // headerToolbar: {
-            //   left: 'addEventButton',
-            //   center: 'title',
-            // },
-            // selectable: true,
-            // eventClick: function(arg) {
-            //   console.log(arg.event.title);
-            // },
-            // select: function(arg) {
-            //   // convert to dete input value 
-            //   console.log(arg.start);
-            //   // startDate.value = new Date(arg.start).toISOString().slice(0, 16);
-            //   // endDate.value = new Date(arg.end).toISOString().slice(0, 16);
-            //   btnTrig.click();
-            // },
-            // businessHours: true,
-            // dayMaxEvents: true, // allow "more" link when too many events
             events: await getEvents(),
         });
 

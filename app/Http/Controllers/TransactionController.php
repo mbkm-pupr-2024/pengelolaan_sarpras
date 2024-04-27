@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\Properties;
 use App\Models\Wisma;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RuanganExports;
 use App\Exports\WismaExports;
 
 class TransactionController extends Controller
@@ -140,6 +141,12 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
     
     }
 
+    public function ruangan_export()
+    {
+        $now = now()->toDateString();
+        return Excel::download(new RuanganExports, "$now-rekap-ruangan.xlsx");
+    }
+
 /* ========================================================
                /$$                                  
               |__/                                  
@@ -165,6 +172,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
             'rooms' => 'required|string',
+            'start' => 'required|date',
             'end' => 'required|date',
         ]);
 
@@ -179,6 +187,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
                 'name' => ucfirst($request->name),
                 'from' => ucfirst($request->asal),
                 'room' => $room,
+                'start' => $request->start,
                 'end' => $request->end,
             ]);
         }

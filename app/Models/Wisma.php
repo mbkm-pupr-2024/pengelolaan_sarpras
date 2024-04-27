@@ -14,6 +14,7 @@ class Wisma extends Model
         'from',
         'room',
         'isOut',
+        'start',
         'end',
     ];
 }

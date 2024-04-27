@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('from');
             $table->string('room');
+            $table->date('start');
             $table->date('end');
             $table->boolean('isOut')->default(false);
             $table->timestamps();
