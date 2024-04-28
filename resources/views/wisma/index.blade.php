@@ -15,7 +15,7 @@
         <div class="card-body">
           <h5 class="card-title">Wisma Suhodo</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+          Wisma Suhodo, terletak pada sebelah barat ruang makan 1 yang memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
           </p>
           <a href="javascript:void(0)" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#roomsSuhodo">Cek Ketersedian</a>
         </div>
@@ -26,7 +26,7 @@
         <div class="card-body">
           <h5 class="card-title">Wisma Surjono</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+          Wisma Surjono, terlatak pada sebela timur ruang makan 1. Wisma Surjono memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
           </p>
           <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#roomsSurjono">Cek Ketersedian</a>
         </div>
@@ -37,7 +37,7 @@
         <div class="card-body">
           <h5 class="card-title">Paviliun</h5>
           <p class="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+          Paviliun terletak pada bagian paling barat. Paviliun diperuntukan untuk orang - orang penting atau para instruktur yang datang untuk memberikan pelatihan. Paviliun memiliki 1 lantai.
           </p>
           <a href="javascript:void(0)" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#roomsPaviliun">Cek Ketersedian</a>
         </div>
