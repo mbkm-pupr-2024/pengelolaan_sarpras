@@ -113,6 +113,11 @@ table th,td{
   padding-left: 0.3rem;
 }
 
+.scroll-container {
+  overflow-x: auto; /* or overflow-x: scroll; */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
 /* styles for Booking.php Forms nd all */
 #seatsDiagram td,
 #displaySeats td{
@@ -126,7 +131,7 @@ table th,td{
   display: inline-block;
   background-color: #efefef;
   border-radius: 5px;
-  cursor: pointer;;
+  cursor: pointer;
 }
 
 #seatsDiagram td,
