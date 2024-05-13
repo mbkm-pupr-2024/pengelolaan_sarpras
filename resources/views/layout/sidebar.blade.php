@@ -16,7 +16,7 @@
   @php $menus = ['properties', 'wisma-admin', 'ruangan.detail']; $route = Route::currentRouteName(); @endphp
   <ul class="menu-inner py-1">
     <!-- Dashboard -->
-    <li class="menu-item {{ ($route == 'dashboard') ? 'active' : '' }}">
+    <li class="menu-item {{ ($route == 'dashboard') ? 'active' : '' }}" id="dashboard">
       <a href="/" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
         <div data-i18n="Analytics">Dashboard</div>
@@ -25,23 +25,23 @@
 
     @if (Auth::user()->role == 'admin')
     <li class="menu-item {{ (in_array($route, $menus))? 'active open' : '' }}">
-      <a href="#" class="menu-link menu-toggle">
+      <a href="#" class="menu-link menu-toggle" id="data-master">
         <i class="menu-icon tf-icons bx bx-coin-stack"></i>
         <div data-i18n="Apps">Data Master</div>
       </a>
 
       <ul class="menu-sub">
-        <li class="menu-item {{ ($route == 'properties') ? 'active' : '' }}">
+        <li class="menu-item {{ ($route == 'properties') ? 'active' : '' }}" id="data-ruangan">
           <a href="{{ route('properties') }}" class="menu-link">
             <div data-i18n="going">Data Ruangan</div>
           </a>
         </li>
-        <li class="menu-item {{ ($route == 'ruangan.detail') ? 'active' : '' }}">
+        <li class="menu-item {{ ($route == 'ruangan.detail') ? 'active' : '' }}" id="data-peminjaman">
           <a href="{{ route('ruangan.detail') }}" class="menu-link">
             <div data-i18n="going">Peminjaman Ruangan</div>
           </a>
         </li>
-        <li class="menu-item {{ ($route == 'wisma-admin') ? 'active' :  '' }}">
+        <li class="menu-item {{ ($route == 'wisma-admin') ? 'active' :  '' }}" id="data-asrama">
           <a href="{{ route('wisma-admin') }}" class="menu-link">
             <div data-i18n="idle">Asrama & Paviliun</div>
           </a>
@@ -49,18 +49,18 @@
       </ul>
     </li>
     <li class="menu-item {{ (strpos($route, 'transactions') !== false) ? 'active open' : '' }}">
-      <a href="#" class="menu-link menu-toggle">
+      <a href="#" class="menu-link menu-toggle" id="transaction">
         <i class="menu-icon tf-icons bx bx-grid-alt"></i>
         <div data-i18n="Apps">Peminjaman</div>
       </a>
 
       <ul class="menu-sub">
-        <li class="menu-item {{ ($route == 'transactions.ruangan.show') ? 'active' : '' }}">
+        <li class="menu-item {{ ($route == 'transactions.ruangan.show') ? 'active' : '' }}" id="trans-ruangan">
           <a href="{{ route('transactions.ruangan.show') }}" class="menu-link">
             <div data-i18n="going">Ruangan</div>
           </a>
         </li>
-        <li class="menu-item {{ ($route == 'transactions.wisma.show') ? 'active' : '' }}">
+        <li class="menu-item {{ ($route == 'transactions.wisma.show') ? 'active' : '' }}" id="trans-asrama">
           <a href="{{ route('transactions.wisma.show') }}" class="menu-link">
             <div data-i18n="idle">Asrama & Paviliun</div>
           </a>

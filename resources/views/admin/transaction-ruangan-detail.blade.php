@@ -36,7 +36,7 @@
             <a href="{{ route('transactions.ruangan.show') }}" class="btn btn-primary me-3">
               <span class="tf-icons bx bx-plus-medical bx-sm"></span>
             </a>
-            <a href="{{ route('transactions.ruangan.export') }}" class="btn btn-success">
+            <a href="{{ route('transactions.ruangan.export') }}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-spreadsheet bx-xs' ></i> <span>Export to excel</span>">
               <span class="tf-icons bx bx-cloud-download bx-sm"></span>
             </a>
           </div>
