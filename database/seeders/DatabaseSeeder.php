@@ -27,7 +27,9 @@ class DatabaseSeeder extends Seeder
                 'email' => 'admin@pu.com',
                 'role' => 'admin',
                 'password' => '$2y$12$v.jie81HrRHdKePKWbsKFO3ubpsFDeYx0PzbspmMI1iFFbW9/P9HO',
-            ],
+            ]
+        );
+        DB::table('users')->insert(
             [
                 'name' => 'bapekom6sby',
                 'email' => 'bapekom6sby@pu.com',

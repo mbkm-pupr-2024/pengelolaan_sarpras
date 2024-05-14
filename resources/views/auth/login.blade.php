@@ -53,9 +53,10 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
-                <span class="app-brand-text demo text-body fw-bolder">{{ ucfirst('Monas') }} 🔥</span>
-              </a>
+              <span class="app-brand-logo demo">
+                <img src="{{ asset('/assets/img/favicon/logo.png') }}" width="50px" alt="">
+              </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">monas</span>
             </div>
 
             @if($errors->any())
@@ -107,9 +108,6 @@
     </div>
   </div>
 
-  <!-- / Content -->
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
   <script>
     const eyeBtn = document.getElementById('eyeBtn');
     const passField = document.getElementById('password');
