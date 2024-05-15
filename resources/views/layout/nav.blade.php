@@ -10,14 +10,14 @@
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <!-- User -->
-      <li class="nav-item navbar-dropdown dropdown-user dropdown">
+      <li class="nav-item navbar-dropdown dropdown-user dropdown" id="user-profile">
         <a href="{{ route('profile') }}">
           <div class="avatar avatar-online">
             <img src="{{ asset('assets/img/avatars/avatar.jpg') }}" alt class="w-px-40 h-auto rounded-circle" />
           </div>
         </a>
       </li>
-      <li class="nav-item navbar-dropdown dropdown-user dropdown">
+      <li class="nav-item navbar-dropdown dropdown-user dropdown" id="btn-logout">
         <a class="nav-link" href="#logout" data-bs-toggle="modal" data-bs-target="#logout">
           <i class="bx bx-sm bx-power-off me-2"></i>
         </a>
