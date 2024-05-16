@@ -56,7 +56,7 @@
               <span class="app-brand-logo demo">
                   <img src="{{ asset('/assets/img/favicon/logo.png') }}" width="50px" alt="">
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">monas</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Topang</span>
             </div>
             <!-- /Logo -->
             <h4 class="mb-4">Register</h4>
