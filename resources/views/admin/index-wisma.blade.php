@@ -34,34 +34,42 @@
             <h5 class="card-header">Asrama & Paviliun</h5>
           </div>
           <div class="my-auto pe-4">
-            <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary me-3">
-              <span class="tf-icons bx bx-plus-medical bx-sm"></span>
-            </a>
+            @if(Auth::user()->role == 'admin')
+              <a href="{{ route('transactions.wisma.show') }}" class="btn btn-primary me-3">
+                <span class="tf-icons bx bx-plus-medical bx-sm"></span>
+              </a>
+            @endif
             <a href="{{ route('transactions.wisma.export') }}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-spreadsheet bx-xs' ></i> <span>Export to excel</span>">
               <span class="tf-icons bx bx-cloud-download bx-sm"></span>
             </a>
           </div>
         </div>
         <div class="table-responsive text-nowrap p-4">
-          <table id="datatable1" class="table">
+          <table id="{{ (Auth::user()->role == 'admin')? 'datatable1' : 'datatable2' }}" class="table">
             <thead>
               <tr>
-                <th style="width: 10px">✔</th>
+                @if(Auth::user()->role == 'admin')
+                  <th style="width: 10px">✔</th>
+                @endif
                 <th>Nama</th>
                 <th>Ruangan</th>
                 <th>Asal</th>
                 <th>Mulai</th>
                 <th>Selesai</th>
                 <th>Status</th>
-                <th>Actions</th>
+                @if(Auth::user()->role == 'admin')
+                  <th>Actions</th>
+                @endif
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
               @foreach ($transactions as $wisma )
               <tr>
-                <th>
-                  <input type="checkbox" class="form-check-input" value="{{ $wisma->id }}">
-                </th>
+                @if(Auth::user()->role == 'admin')
+                  <th>
+                    <input type="checkbox" class="form-check-input" value="{{ $wisma->id }}">
+                  </th>
+                @endif
                 <td><strong>{{ ucfirst($wisma->name) }}</strong></td>
                 <td>{{ $wisma->room }}</td>
                 <td>
@@ -74,11 +82,13 @@
                     {{ (!$wisma->isOut)? 'Ditempati':'Selesai' }}
                   </span> 
                 </td>
-                <td>
-                  <button class="btn btn-success btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#modalCenter{{ $wisma->id }}"><i class="bx bx-edit-alt me-2"></i>Edit
-                  </button>
-                </td>
+                @if(Auth::user()->role == 'admin')
+                  <td>
+                    <button class="btn btn-success btn-sm" data-bs-toggle="modal"
+                      data-bs-target="#modalCenter{{ $wisma->id }}"><i class="bx bx-edit-alt me-2"></i>Edit
+                    </button>
+                  </td>
+                @endif
               </tr>
 
               @include('components.edit-modal')
