@@ -47,9 +47,11 @@
                         </tbody>
                         @endforeach
                     </table>
-                    @if (Auth::user()->role == 'admin')
-                    <a href="{{ route('ruangan.detail') }}" class="btn btn-success" id="more-btn">More</a>
-                    @endif
+                    @auth
+                        @if (Auth::user()->role == 'admin')
+                        <a href="{{ route('ruangan.detail') }}" class="btn btn-success" id="more-btn">More</a>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>
@@ -76,9 +78,11 @@
                                     }}</h4>
                             </div>
                         </div>
-                        @if(Auth::user()->role == 'admin')
-                        <a href="{{ route('wisma-admin') }}" class="btn btn-danger" id="more-btn2">More</a>
-                        @endif
+                        @auth
+                            @if(Auth::user()->role == 'admin')
+                            <a href="{{ route('wisma-admin') }}" class="btn btn-danger" id="more-btn2">More</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -106,9 +110,11 @@
                                 </h4>
                             </div>
                         </div>
-                        @if(Auth::user()->role == 'admin')
-                        <a href="{{ route('wisma-admin') }}" class="btn btn-warning" id="more-btn3">More</a>
-                        @endif
+                        @auth
+                            @if(Auth::user()->role == 'admin')
+                            <a href="{{ route('wisma-admin') }}" class="btn btn-warning" id="more-btn3">More</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -175,10 +181,11 @@
     </div>
 </div>
 <!-- / Content -->
-
-@if (Auth::user()->role == 'admin')
-    @include('components.demo-btn')
-@endif
+@auth
+    @if (Auth::user()->role == 'admin')
+        @include('components.demo-btn')
+    @endif
+@endauth
 
 @endsection
 

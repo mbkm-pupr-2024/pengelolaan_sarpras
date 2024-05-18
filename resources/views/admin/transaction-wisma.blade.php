@@ -202,13 +202,21 @@
     const button = document.querySelectorAll('td');
     // convert php collection to js array
     const seats = @json($wisma);
-    // console.log(seats);
+    const nama = @json($nama);
+    // console.log(nama);
     let limit = document.getElementById('limit').value;
     const newSeats = [];
     // check if seat is available from the server
     for (let i = 0; i < button.length; i++) {
       if (seats.includes((button[i].getAttribute('data-name')))) {
+        let pos = seats.indexOf(button[i].getAttribute('data-name'));
+
         button[i].classList.add('notAvailable');
+        button[i].setAttribute("data-bs-toggle", "tooltip")
+        button[i].setAttribute("title", nama[pos]);
+        button[i].setAttribute("data-bs-offset", "0,4");
+        button[i].setAttribute("data-bs-html", "true");
+        button[i].setAttribute("data-bs-placement", "top");
       }
     }
 
@@ -223,14 +231,14 @@
 
         if (newSeats.length >= limit && !btn.classList.contains('notAvailable')) {
           alert('Anda hanya bisa memilih ' + limit + ' kamar');
-          triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
+          // triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
           return;
         }
 
         // if seats include on seats array then return
         if (seats.includes(btn.getAttribute('data-name'))) {
           alert('Kamar ' + btn.getAttribute('data-name') + ' untuk saat ini tidak tersedia');
-          triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
+          // triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
           return;
         }
 

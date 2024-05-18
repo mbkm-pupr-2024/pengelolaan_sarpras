@@ -19,8 +19,9 @@ use App\Http\Controllers\ProfileController;
 */
 
 // auth 
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/asrama', [TransactionController::class, 'wisma_show'])->name('asrama');
 Route::group(['middleware' => 'auth'], function() {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
         Route::get("/redirectAuthenticatedUsers", [RedirectAuthenticatedUsersController::class, "home"]);
     

@@ -233,15 +233,23 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $wisma = $wisma->map(function ($item) {
             return $item->room;
         });
+        $nama = Wisma::where('isOut', 0)->get();
+        $nama = $nama->map(function ($item) {
+            return $item->name;
+        });
 
-        if (auth()->user()->role == 'admin') {
-            return view('admin.transaction-wisma', [
-                'wisma' => $wisma,
-            ]);
+        if (auth()->check()){
+            if (auth()->user()->role == 'admin') {
+                return view('admin.transaction-wisma', [
+                    'wisma' => $wisma,
+                    'nama' => $nama,
+                ]);
+            }
         }
-
+        
         return view('wisma.index', [
             'wisma' => $wisma,
+            'nama' => $nama,
         ]);
     }
 

@@ -94,16 +94,10 @@
                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
               </div>
             </form>
-            <form action="{{ route('login-store') }}" method="POST">
-              @csrf
-              <div class="form-control d-none">
-                <input type="text" name="name" value="tamu">
-                <input type="password" name="password" value="tamu">
-              </div>
-              <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">Login as tamu</button>
-              </div>
-            </form>
+
+            <div class="mb-3">
+              <a href="{{ route('dashboard') }}" class="btn btn-primary d-grid w-100" type="submit">Login as tamu</a>
+            </div>
 
             <p class="text-center">
               <span>New on our platform?</span>
