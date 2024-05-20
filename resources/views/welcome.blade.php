@@ -28,25 +28,27 @@
                             Kegiatan
                         </h4>
                     </div>
-                    <table class="table table-hover mb-3">
-                        <thead>
-                            <tr>
-                                <th>Event</th>
-                                <th>Tanggal</th>
-                                <th>Ruangan</th>
-                            </tr>
-                        </thead>
-                        @foreach ( $events as $e )
-                        <tbody>
-                            <tr>
-                                <td>{{ ucfirst($e->kegiatan) }}</td>
-                                <td>{{ date("d-m-Y", strtotime($e->start)) . " | " . date("d-m-Y", strtotime($e->end))
-                                    }}</td>
-                                <td>{{ $e->properties->name }}</td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-3">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Tanggal</th>
+                                    <th>Ruangan</th>
+                                </tr>
+                            </thead>
+                            @foreach ( $events as $e )
+                            <tbody>
+                                <tr>
+                                    <td>{{ ucfirst($e->kegiatan) }}</td>
+                                    <td>{{ date("d-m-Y", strtotime($e->start)) . " | " . date("d-m-Y", strtotime($e->end))
+                                        }}</td>
+                                    <td>{{ $e->properties->name }}</td>
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                    </div>
                     @auth
                         @if (Auth::user()->role == 'admin')
                         <a href="{{ route('ruangan.detail') }}" class="btn btn-success" id="more-btn">More</a>

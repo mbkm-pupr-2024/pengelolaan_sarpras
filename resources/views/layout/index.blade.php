@@ -68,8 +68,7 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="#" target="_blank" class="footer-link fw-bolder">TIM MBKM 2024</a>
+                  , by <span class="fw-bolder">Bapekom 6 Surabaya</span> colaborate with <span class="fw-bolder">MBKM 2024 UTM</span> 
                 </div>
               </div>
             </footer>
