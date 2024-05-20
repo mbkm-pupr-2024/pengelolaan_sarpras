@@ -10,7 +10,6 @@
 @section('head')
 <link href="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('/assets/vendor/css/driver.css') }}">
-<link href="{{ asset('/assets/vendor/libs/datatables/datatables.min.css') }}" rel="stylesheet">
 @endsection
 
 <!-- Content -->
@@ -30,7 +29,7 @@
                         </h4>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-3" id="datatable">
+                        <table class="table table-hover mb-3">
                             <thead>
                                 <tr>
                                     <th>Event</th>
@@ -195,8 +194,6 @@
 @section('script')
 <script src="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.js') }}"></script>
 <script src="{{ asset('/assets/vendor/js/driver.js.iife.js') }}"></script>
-<script src="{{ asset('/assets/vendor/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('/assets/vendor/js/datatables.js') }}"></script>
 <script src="{{ asset('/assets/js/init-driver.js') }}"></script>
 <script>
     const venue = document.getElementById('venue');
