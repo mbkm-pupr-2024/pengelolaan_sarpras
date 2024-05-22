@@ -14,7 +14,7 @@ class WismaExports implements FromCollection, WithHeadings, WithMapping
     */
     public function collection()
     {
-        return Wisma::select('name', 'room', 'from', 'start','end', 'isOut')->get();
+        return Wisma::select('name', 'room', 'from', 'kegiatan', 'start','end', 'isOut')->get();
     }
 
     public function headings(): array
@@ -23,6 +23,7 @@ class WismaExports implements FromCollection, WithHeadings, WithMapping
             'Nama',
             'Kamar',
             'Asal',
+            'Kegiatan',
             'Tanggal mulai',
             'Tanggal selesai',
             'Status'
@@ -35,6 +36,7 @@ class WismaExports implements FromCollection, WithHeadings, WithMapping
             $wisma->name,
             $wisma->room,
             $wisma->from,
+            $wisma->kegiatan,
             date("d-m-Y", strtotime($wisma->start)),
             date("d-m-Y", strtotime($wisma->end)),
             $wisma->isOut ? 'Selesai' : 'Ditempati'

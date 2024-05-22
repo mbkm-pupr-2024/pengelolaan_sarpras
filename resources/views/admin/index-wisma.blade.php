@@ -54,6 +54,7 @@
                 <th>Nama</th>
                 <th>Ruangan</th>
                 <th>Asal</th>
+                <th>Kegiatan</th>
                 <th>Mulai</th>
                 <th>Selesai</th>
                 <th>Status</th>
@@ -72,9 +73,8 @@
                 @endif
                 <td><strong>{{ ucfirst($wisma->name) }}</strong></td>
                 <td>{{ $wisma->room }}</td>
-                <td>
-                  {{ $wisma->from}}
-                </td>
+                <td>{{ $wisma->from}}</td>
+                <td>{{ $wisma->kegiatan }}</td>
                 <td>{{ date("d-m-Y", strtotime($wisma->start)) }}</td>
                 <td>{{ date("d-m-Y", strtotime($wisma->end)) }}</td>
                 <td>

@@ -13,6 +13,7 @@ class Wisma extends Model
         'name',
         'from',
         'room',
+        'kegiatan',
         'isOut',
         'start',
         'end',

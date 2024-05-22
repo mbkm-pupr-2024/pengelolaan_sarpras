@@ -171,6 +171,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $isValidate = $request->validate([
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
+            'kegiatan' => 'string|max:32',
             'rooms' => 'required|string',
             'start' => 'required|date',
             'end' => 'required|date',
@@ -186,6 +187,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             Wisma::create([
                 'name' => ucfirst($request->name),
                 'from' => ucfirst($request->asal),
+                'kegiatan' => ucfirst($request->kegiatan),
                 'room' => $room,
                 'start' => $request->start,
                 'end' => $request->end,
@@ -201,6 +203,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $isValidate = $request->validate([
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
+            'kegiatan' => 'string|max:32',
         ]);
 
         if (!$isValidate) {
@@ -210,6 +213,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         Wisma::where('id', $id)->update([
             'name' => ucfirst($request->name),
             'from' => ucfirst($request->asal),
+            'kegiatan' => ucfirst($request->kegiatan),
         ]);
 
         return redirect()->route('wisma-admin')
@@ -237,12 +241,17 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $nama = $nama->map(function ($item) {
             return $item->name;
         });
+        $kegiatan = Wisma::where('isOut', 0)->get();
+        $kegiatan = $kegiatan->map(function ($item) {
+            return $item->kegiatan;
+        });
 
         if (auth()->check()){
             if (auth()->user()->role == 'admin') {
                 return view('admin.transaction-wisma', [
                     'wisma' => $wisma,
                     'nama' => $nama,
+                    'kegiatan' => $kegiatan,
                 ]);
             }
         }
@@ -250,6 +259,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         return view('wisma.index', [
             'wisma' => $wisma,
             'nama' => $nama,
+            'kegiatan' => $kegiatan,
         ]);
     }
 
