@@ -55,10 +55,20 @@
     const button = document.querySelectorAll('td');
     // convert php collection to js array
     const seats = @json($wisma);
+    const nama = @json($nama);
+    const kegiatan = @json($kegiatan);
     // check if seat is available from the server
     for (let i = 0; i < button.length; i++) {
       if (seats.includes((button[i].getAttribute('data-name')))) {
         button[i].classList.add('notAvailable');
+        let pos = seats.indexOf(button[i].getAttribute('data-name'));
+
+        button[i].classList.add('notAvailable');
+        button[i].setAttribute("data-bs-toggle", "tooltip")
+        button[i].setAttribute("title", `${nama[pos]} <br> ${kegiatan[pos]}`);
+        button[i].setAttribute("data-bs-offset", "0,4");
+        button[i].setAttribute("data-bs-html", "true");
+        button[i].setAttribute("data-bs-placement", "top");
       }
     }
 </script>

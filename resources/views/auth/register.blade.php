@@ -53,7 +53,10 @@
           <div class="card-body">
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <span class="app-brand-text demo text-body fw-bolder">Monas 🔥</span>
+              <span class="app-brand-logo demo">
+                  <img src="{{ asset('/assets/img/favicon/logo.png') }}" width="50px" alt="">
+              </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Topang</span>
             </div>
             <!-- /Logo -->
             <h4 class="mb-4">Register</h4>
@@ -107,14 +110,10 @@
             </p>
           </div>
         </div>
-        <!-- Register Card -->
       </div>
     </div>
   </div>
 
-  <!-- / Content -->
-  <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
   <script>
     const eyeBtn = document.getElementById('eyeBtn');
     const passField = document.getElementById('password');
@@ -128,15 +127,11 @@
 
       passField.type = 'text';
     });
-    // when eye btn on click show the password
 
   </script>
   <script src="{{ asset('/assets/vendor/js/bootstrap.js') }}"></script>
   <script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-</body>
-
-</html>cript>
-<script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+  <script src="{{ asset('/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 </body>
 
 </html>

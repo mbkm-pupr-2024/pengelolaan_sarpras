@@ -81,24 +81,34 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="limit">Jumlah</label>
+                    <label class="form-label" for="basic-icon-default-kegiatan">Kegiatan</label>
+                    <div class="input-group input-group-merge">
+                      <span id="basic-icon-default-kegiatan2" class="input-group-text"><i
+                          class="bx bx-book-alt"></i></span>
+                      <input type="text" class="form-control" id="basic-icon-default-kegiatan"
+                        placeholder="Tulis disini ..." aria-label="John Doe"
+                        aria-describedby="basic-icon-default-kegiatan2" name="kegiatan" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="limit" class="form-label">Jumlah</label>
                     <input id="limit" type="number" class="form-control" placeholder="Tulis disini ..."
                       aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0"/>
                   </div>
                   <div class="row">
                     <div class="col mb-3">
-                      <label for="start">Mulai</label>
+                      <label for="start" class="form-label">Mulai</label>
                       <input id="start" type="date" class="form-control" placeholder=""
                         aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="start"/>
                     </div>
                     <div class="col mb-3">
-                      <label for="end">Selesai</label>
+                      <label for="end" class="form-label">Selesai</label>
                       <input id="end" type="date" class="form-control" placeholder=""
                         aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="end"/>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="basic-select">Wisma</label>
+                    <label for="basic-select" class="form-label">Wisma</label>
                     <input id="rooms" type="text" class="form-control" placeholder="Cek ketersediaan..."
                       aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" readonly/>
                   </div>
@@ -202,13 +212,22 @@
     const button = document.querySelectorAll('td');
     // convert php collection to js array
     const seats = @json($wisma);
-    // console.log(seats);
+    const nama = @json($nama);
+    const kegiatan = @json($kegiatan);
+    // console.log(nama);
     let limit = document.getElementById('limit').value;
     const newSeats = [];
     // check if seat is available from the server
     for (let i = 0; i < button.length; i++) {
       if (seats.includes((button[i].getAttribute('data-name')))) {
+        let pos = seats.indexOf(button[i].getAttribute('data-name'));
+
         button[i].classList.add('notAvailable');
+        button[i].setAttribute("data-bs-toggle", "tooltip")
+        button[i].setAttribute("title", `${nama[pos]} <br> ${kegiatan[pos]}`);
+        button[i].setAttribute("data-bs-offset", "0,4");
+        button[i].setAttribute("data-bs-html", "true");
+        button[i].setAttribute("data-bs-placement", "top");
       }
     }
 
@@ -223,14 +242,14 @@
 
         if (newSeats.length >= limit && !btn.classList.contains('notAvailable')) {
           alert('Anda hanya bisa memilih ' + limit + ' kamar');
-          triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
+          // triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
           return;
         }
 
         // if seats include on seats array then return
         if (seats.includes(btn.getAttribute('data-name'))) {
           alert('Kamar ' + btn.getAttribute('data-name') + ' untuk saat ini tidak tersedia');
-          triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
+          // triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
           return;
         }
 

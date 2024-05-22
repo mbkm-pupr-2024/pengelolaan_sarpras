@@ -9,6 +9,7 @@
 
 @section('head')
 <link href="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('/assets/vendor/css/driver.css') }}">
 @endsection
 
 <!-- Content -->
@@ -17,7 +18,7 @@
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Dashboard</h4>
     <div class="row">
         <div class="col-lg-6  mb-4 order-0">
-            <div class="card">
+            <div class="card" id="kegiatan">
                 <div class="card-body">
                     <div class="card-title">
                         <h4 class="text-nowrap mb-2">
@@ -27,33 +28,37 @@
                             Kegiatan
                         </h4>
                     </div>
-                    <table class="table table-hover mb-3">
-                        <thead>
-                            <tr>
-                                <th>Event</th>
-                                <th>Tanggal</th>
-                                <th>Ruangan</th>
-                            </tr>
-                        </thead>
-                        @foreach ( $events as $e )
-                        <tbody>
-                            <tr>
-                                <td>{{ ucfirst($e->kegiatan) }}</td>
-                                <td>{{ date("d-m-Y", strtotime($e->start)) . " | " . date("d-m-Y", strtotime($e->end))
-                                    }}</td>
-                                <td>{{ $e->properties->name }}</td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
-                    @if (Auth::user()->role == 'admin')
-                    <a href="{{ route('ruangan.detail') }}" class="btn btn-success">More</a>
-                    @endif
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-3">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Tanggal</th>
+                                    <th>Ruangan</th>
+                                </tr>
+                            </thead>
+                            @foreach ( $events as $e )
+                            <tbody>
+                                <tr>
+                                    <td>{{ ucfirst($e->kegiatan) }}</td>
+                                    <td>{{ date("d-m-Y", strtotime($e->start)) . " | " . date("d-m-Y", strtotime($e->end))
+                                        }}</td>
+                                    <td>{{ $e->properties->name }}</td>
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                    @auth
+                        @if (Auth::user()->role == 'admin')
+                        <a href="{{ route('ruangan.detail') }}" class="btn btn-success" id="more-btn">More</a>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-3 mb-4">
-            <div class="card">
+            <div class="card" id="paviliun-sum">
                 <div class="card-body">
                     <div class="card-title">
                         <h4 class="text-nowrap mb-2">
@@ -75,15 +80,17 @@
                                     }}</h4>
                             </div>
                         </div>
-                        @if(Auth::user()->role == 'admin')
-                        <a href="{{ route('wisma-admin') }}" class="btn btn-danger">More</a>
-                        @endif
+                        @auth
+                            @if(Auth::user()->role == 'admin')
+                            <a href="{{ route('wisma-admin') }}" class="btn btn-danger" id="more-btn2">More</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-12 col-md-3 mb-4">
-            <div class="card">
+            <div class="card" id="asrama-sum">
                 <div class="card-body">
                     <div class="card-title">
                         <h4 class="text-nowrap mb-2">
@@ -105,9 +112,11 @@
                                 </h4>
                             </div>
                         </div>
-                        @if(Auth::user()->role == 'admin')
-                        <a href="{{ route('wisma-admin') }}" class="btn btn-warning">More</a>
-                        @endif
+                        @auth
+                            @if(Auth::user()->role == 'admin')
+                            <a href="{{ route('wisma-admin') }}" class="btn btn-warning" id="more-btn3">More</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -144,25 +153,6 @@
                         </div>
                     </div>
                     @endforeach
-                    <!-- <div class="carousel-item">
-                        <div class="card">
-                            <div class="d-flex align-items-end row">
-                                <div class="col p-5">
-                                    <div class="card-body text-center">
-                                        <h1 class="text-dark">Pelatihan fogging</h1>
-                                        <h5 class="card-title text-primary">2024-04-13 | 2024-04-16</h5>
-                                        <h6 class="text-dark mb-1 text-start">Balai Sebelah</h6>
-                                        <p class="mb-4 text-start">
-                                            Di dashboard diisi jumlah kamar dan ruangan yang tersedia untuk di pinjamkan
-                                            You have done <span class="fw-bold">72%</span> more sales today. Check your
-                                            new badge in
-                                            your profile.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-primary" aria-hidden="true"></span>
@@ -193,13 +183,19 @@
     </div>
 </div>
 <!-- / Content -->
+@auth
+    @if (Auth::user()->role == 'admin')
+        @include('components.demo-btn')
+    @endif
+@endauth
 
 @endsection
 
 @section('script')
 <script src="{{ asset('/assets/vendor/libs/fullcalendar/lib/main.min.js') }}"></script>
+<script src="{{ asset('/assets/vendor/js/driver.js.iife.js') }}"></script>
+<script src="{{ asset('/assets/js/init-driver.js') }}"></script>
 <script>
-
     const venue = document.getElementById('venue');
 
     const getEvents = async () => {

@@ -33,10 +33,12 @@
             <h5 class="card-header">Peminjaman Ruangan</h5>
           </div>
           <div class="my-auto pe-4">
-            <a href="{{ route('transactions.ruangan.show') }}" class="btn btn-primary me-3">
-              <span class="tf-icons bx bx-plus-medical bx-sm"></span>
-            </a>
-            <a href="{{ route('transactions.ruangan.export') }}" class="btn btn-success">
+            @if(Auth::user()->role == 'admin')
+              <a href="{{ route('transactions.ruangan.show') }}" class="btn btn-primary me-3">
+                <span class="tf-icons bx bx-plus-medical bx-sm"></span>
+              </a>
+            @endif
+            <a href="{{ route('transactions.ruangan.export') }}" class="btn btn-success" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="" data-bs-original-title="<i class='bx bx-spreadsheet bx-xs' ></i> <span>Export to excel</span>">
               <span class="tf-icons bx bx-cloud-download bx-sm"></span>
             </a>
           </div>
@@ -45,33 +47,41 @@
           <table id="datatable2" class="table">
             <thead>
               <tr>
-                <th style="width: 10px">✔</th>
+                @if(Auth::user()->role == 'admin')
+                  <th style="width: 10px">✔</th>
+                @endif
                 <th>Instansi</th>
                 <th>Kegiatan</th>
                 <th>Ruangan</th>
                 <th>Tanggal</th>
-                <th>Actions</th>
+                @if(Auth::user()->role == 'admin')
+                  <th>Actions</th>
+                @endif
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
               @foreach ($transactions as $t )
               <tr>
-                <th>
-                  <input type="checkbox" class="form-check-input" value="{{ $t->id }}">
-                </th>
+                @if(Auth::user()->role == 'admin')
+                  <th>
+                    <input type="checkbox" class="form-check-input" value="{{ $t->id }}">
+                  </th>
+                @endif
                 <td><strong>{{ ucfirst($t->instansi) }}</strong></td>
                 <td>{{ $t->kegiatan }}</td>
                 <td>
                   {{ $t->properties->name }}
                 </td>
                 <td><span class="me-1">{{ date("d-m-Y", strtotime($t->start)) .' | '. date("d-m-Y", strtotime($t->end)) }}</span></td>
-                <td>
-                  <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#modalCenter{{ $t->id }}">
-                    <i class="bx bx-edit-alt me-2"></i>
-                    Edit
-                  </button>
-                </td>
+                @if(Auth::user()->role == 'admin')
+                  <td>
+                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                      data-bs-target="#modalCenter{{ $t->id }}">
+                      <i class="bx bx-edit-alt me-2"></i>
+                      Edit
+                    </button>
+                  </td>
+                @endif
               </tr>
 
               @include('components.edit-modal')

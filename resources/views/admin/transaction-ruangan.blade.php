@@ -140,7 +140,7 @@
           listEventButton: {
             text: 'List Kegiatan',
             click: function () {
-              window.location.href = '/admin/transactions/ruangan/list';
+              window.location.href = '/transactions/ruangan/list';
             }
           }
         },

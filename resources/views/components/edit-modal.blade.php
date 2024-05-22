@@ -1,4 +1,4 @@
-@if (isset($property))
+@if (isset($property)) {{-- form edit for ruangan --}}
 <div class="modal fade" id="modalCenter{{ $property->id }}" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -40,7 +40,7 @@
     </div>
   </div>
 </div>
-@elseif(isset($t))
+@elseif(isset($t)) {{-- form edit for peminjaman ruangan --}}
 <div class="modal fade" id="modalCenter{{ $t->id }}" tabindex="-1" data-bs-backdrop="static" role="dialog"
   aria-labelledby="addEventLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -92,7 +92,7 @@
     </div>
   </div>
 </div>
-@else
+@else {{-- form edit for penghuni wisma --}} 
 <div class="modal fade" id="modalCenter{{ $wisma->id }}" tabindex="-1" data-bs-backdrop="static" role="dialog"
   aria-labelledby="addEventLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -122,6 +122,14 @@
               <input type="text" class="form-control" id="basic-icon-default-fullname" placeholder="Tulis disini ..."
                 aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="asal"
                 value="{{ $wisma->from }}" />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="basic-icon-default-kegiatan">Kegiatan</label>
+            <div class="input-group input-group-merge">
+              <span id="basic-icon-default-kegiatan2" class="input-group-text"><i class="bx bx-book-alt"></i></span>
+              <input type="text" class="form-control" id="basic-icon-default-kegiatan" placeholder="Tulis disini ..."
+                aria-label="John Doe" aria-describedby="basic-icon-default-kegiatan2" name="kegiatan" value="{{ $wisma->kegiatan }}"/>
             </div>
           </div>
           <div class="mb-3">
