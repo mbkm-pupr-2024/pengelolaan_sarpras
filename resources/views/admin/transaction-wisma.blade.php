@@ -214,7 +214,7 @@
     const seats = @json($wisma);
     const nama = @json($nama);
     const kegiatan = @json($kegiatan);
-    // console.log(nama);
+    // console.log(seats);
     let limit = document.getElementById('limit').value;
     const newSeats = [];
     // check if seat is available from the server
