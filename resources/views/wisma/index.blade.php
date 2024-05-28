@@ -15,7 +15,7 @@
         <div class="card-body">
           <h5 class="card-title">Wisma Suhodo</h5>
           <p class="card-text">
-          Wisma Suhodo, terletak pada sebelah barat ruang makan 1 yang memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
+          Wisma Suhodo, terletak pada sebelah barat ruang makan 1 yang memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebelah timur dan nomor genap pada sebelah barat
           </p>
           <a href="javascript:void(0)" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#roomsSuhodo">Cek Ketersedian</a>
         </div>
@@ -26,7 +26,7 @@
         <div class="card-body">
           <h5 class="card-title">Wisma Surjono</h5>
           <p class="card-text">
-          Wisma Surjono, terlatak pada sebela timur ruang makan 1. Wisma Surjono memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
+          Wisma Surjono, terlatak pada sebelah timur ruang makan 1. Wisma Surjono memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebelah timur dan nomor genap pada sebelah barat
           </p>
           <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#roomsSurjono">Cek Ketersedian</a>
         </div>
