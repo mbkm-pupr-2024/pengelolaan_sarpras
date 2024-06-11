@@ -197,7 +197,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $rooms = explode(',', $request->rooms);
 
         // error untuk orang yang belum dapet ruangan
-        $erroRoom = [];
+        $errorRoom = [];
         foreach ($rooms as $room) {
 
             $transactions = $this->check_available_asrama($request->start, $request->end, $room);
@@ -218,7 +218,14 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             ]);
         }
         
-        return redirect()->route('wisma-admin')
+        if (count($errorRoom) > 0) {
+            $listRooms =  implode(',', $errorRoom);
+
+            return redirect()->route('transactions.wisma.show')
+                    ->with('failed', "$request->name kamar $listRooms, gagal ditambahkan karena ruangan sudah digunakan");
+        }
+
+        return redirect()->route('transactions.wisma.show')
                 ->with('success', 'Data berhasil ditambahkan');
     }
 
