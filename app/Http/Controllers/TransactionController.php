@@ -184,7 +184,7 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         $isValidate = $request->validate([
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
-            'kegiatan' => 'string|max:32',
+            'kegiatan' => 'max:32',
             'rooms' => 'required|string',
             'start' => 'required|date',
             'end' => 'required|date',
@@ -222,7 +222,8 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             $listRooms =  implode(',', $errorRoom);
 
             return redirect()->route('transactions.wisma.show')
-                    ->with('failed', "$request->name kamar $listRooms, gagal ditambahkan karena ruangan sudah digunakan");
+                    ->with('failed', "$request->name kamar $listRooms, gagal ditambahkan karena ruangan sudah digunakan")
+                    ->withInput($request->all());
         }
 
         return redirect()->route('transactions.wisma.show')

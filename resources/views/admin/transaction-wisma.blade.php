@@ -67,7 +67,7 @@
                       <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
                       <input type="text" class="form-control" id="basic-icon-default-fullname"
                         placeholder="Tulis disini ..." aria-label="John Doe"
-                        aria-describedby="basic-icon-default-fullname2" name="name" />
+                        aria-describedby="basic-icon-default-fullname2" value="{{ old('name') }}" name="name" required/>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -77,7 +77,7 @@
                           class="bx bx-location-plus"></i></span>
                       <input type="text" class="form-control" id="basic-icon-default-fullname"
                         placeholder="Tulis disini ..." aria-label="John Doe"
-                        aria-describedby="basic-icon-default-fullname2" name="asal" />
+                        aria-describedby="basic-icon-default-fullname2" value="{{ old('asal') }}" name="asal" required/>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -93,24 +93,24 @@
                   <div class="mb-3">
                     <label for="limit" class="form-label">Jumlah</label>
                     <input id="limit" type="number" class="form-control" placeholder="Tulis disini ..."
-                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0"/>
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0" required />
                   </div>
                   <div class="row">
                     <div class="col mb-3">
                       <label for="start" class="form-label">Mulai</label>
                       <input id="start" type="date" class="form-control" placeholder=""
-                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="start"/>
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="{{ old('start') }}" name="start" required />
                     </div>
                     <div class="col mb-3">
                       <label for="end" class="form-label">Selesai</label>
                       <input id="end" type="date" class="form-control" placeholder=""
-                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="end"/>
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="{{ old('end') }}" name="end" required />
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="basic-select" class="form-label">Wisma</label>
                     <input id="rooms" type="text" class="form-control" placeholder="Cek ketersediaan..."
-                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" readonly/>
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" readonly required/>
                   </div>
                   <button type="submit" class="btn btn-primary" id="submitBtnForm">Submit</button>
                 </form>

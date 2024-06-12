@@ -69,7 +69,7 @@
                         </h4>
                     </div>
                     <div class="capacity">
-                        <div class="d-flex justify-content-evenly">
+                        <div class="d-flex justify-content-evenly flex-wrap">
                             <div class="left">
                                 <span class="d-block mb-1">Terisi</span>
                                 <h4 class="card-title text-nowrap mb- text-danger text-center">{{ $paviliun }}</h4>
@@ -77,6 +77,11 @@
                             <div class="right">
                                 <span class="d-block mb-1">Kosong</span>
                                 <h4 class="card-title text-nowrap mb-2 text-success text-center">{{ $paviliunAvailable
+                                    }}</h4>
+                            </div>
+                            <div class="bottom">
+                                <span class="d-block mb-1">Antrian</span>
+                                <h4 class="card-title text-nowrap mb-2 text-warning text-center">{{ $paviliunQueue
                                     }}</h4>
                             </div>
                         </div>
@@ -101,7 +106,7 @@
                         </h4>
                     </div>
                     <div class="capacity">
-                        <div class="d-flex justify-content-evenly">
+                        <div class="d-flex justify-content-evenly flex-wrap">
                             <div class="left">
                                 <span class="d-block mb-1">Terisi</span>
                                 <h4 class="card-title text-nowrap mb- text-danger text-center">{{ $wisma }}</h4>
@@ -109,6 +114,11 @@
                             <div class="right">
                                 <span class="d-block mb-1">Kosong</span>
                                 <h4 class="card-title text-nowrap mb-2 text-success text-center">{{ $wismaAvailable }}
+                                </h4>
+                            </div>
+                            <div class="bottom">
+                                <span class="d-block mb-1">Antrian</span>
+                                <h4 class="card-title text-nowrap mb-2 text-warning text-center">{{ $wismaQueue }}
                                 </h4>
                             </div>
                         </div>
