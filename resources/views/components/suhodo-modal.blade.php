@@ -4,6 +4,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo Lantai 1</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -84,6 +88,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo Lantai 2</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -98,6 +106,7 @@
                   <td id="seat-209" data-name="Suhodo 209-b">209 - b</td>
                   <td id="seat-211" data-name="Suhodo 211-b">211 - b</td>
                   <td id="seat-213" data-name="Suhodo 213-b">213 - b</td>
+                  <td id="seat-215" data-name="Suhodo 215-b">215 - b</td>
                   <td id="seat-217" data-name="Suhodo 217-b">217 - b</td>
                   <td id="seat-219" data-name="Suhodo 219-b">219 - b</td>
                   <td id="seat-221" data-name="Suhodo 221-b">221 - b</td>
@@ -111,6 +120,7 @@
                   <td id="seat-209" data-name="Suhodo 209-a">209 - a</td>
                   <td id="seat-211" data-name="Suhodo 211-a">211 - a</td>
                   <td id="seat-213" data-name="Suhodo 213-a">213 - a</td>
+                  <td id="seat-215" data-name="Suhodo 215-a">215 - a</td>
                   <td id="seat-217" data-name="Suhodo 217-a">217 - a</td>
                   <td id="seat-219" data-name="Suhodo 219-a">219 - a</td>
                   <td id="seat-221" data-name="Suhodo 221-a">221 - a</td>
@@ -168,6 +178,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Suhodo Lantai 3</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

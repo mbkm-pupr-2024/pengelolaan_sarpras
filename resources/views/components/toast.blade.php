@@ -15,5 +15,5 @@
 <script>
   setTimeout(function () {
     document.getElementById('close').click();
-  }, 5000);
+  }, 15000);
 </script>

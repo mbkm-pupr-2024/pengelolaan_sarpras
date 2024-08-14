@@ -4,6 +4,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 1</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -86,6 +90,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 2</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -164,6 +172,10 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalFullTitle">Wisma Surjono Lantai 3</h5>
+          @if (Auth::check())
+            <button class="btn see">Lihat<i class="bx bx-show"></i></button>
+            <button class="btn hide">Sembunyikan<i class="bx bx-hide"></i></button>
+          @endif
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

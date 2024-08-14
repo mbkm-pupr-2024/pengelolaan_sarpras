@@ -67,7 +67,7 @@
                       <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
                       <input type="text" class="form-control" id="basic-icon-default-fullname"
                         placeholder="Tulis disini ..." aria-label="John Doe"
-                        aria-describedby="basic-icon-default-fullname2" name="name" />
+                        aria-describedby="basic-icon-default-fullname2" value="{{ old('name') }}" name="name" required/>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -77,7 +77,7 @@
                           class="bx bx-location-plus"></i></span>
                       <input type="text" class="form-control" id="basic-icon-default-fullname"
                         placeholder="Tulis disini ..." aria-label="John Doe"
-                        aria-describedby="basic-icon-default-fullname2" name="asal" />
+                        aria-describedby="basic-icon-default-fullname2" value="{{ old('asal') }}" name="asal" required/>
                     </div>
                   </div>
                   <div class="mb-3">
@@ -93,24 +93,24 @@
                   <div class="mb-3">
                     <label for="limit" class="form-label">Jumlah</label>
                     <input id="limit" type="number" class="form-control" placeholder="Tulis disini ..."
-                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0"/>
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" min="0" value="0" required />
                   </div>
                   <div class="row">
                     <div class="col mb-3">
                       <label for="start" class="form-label">Mulai</label>
                       <input id="start" type="date" class="form-control" placeholder=""
-                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="start"/>
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="{{ old('start') }}" name="start" required />
                     </div>
                     <div class="col mb-3">
                       <label for="end" class="form-label">Selesai</label>
                       <input id="end" type="date" class="form-control" placeholder=""
-                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="end"/>
+                        aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="{{ old('end') }}" name="end" required />
                     </div>
                   </div>
                   <div class="mb-3">
                     <label for="basic-select" class="form-label">Wisma</label>
                     <input id="rooms" type="text" class="form-control" placeholder="Cek ketersediaan..."
-                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" readonly/>
+                      aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" name="rooms" readonly required/>
                   </div>
                   <button type="submit" class="btn btn-primary" id="submitBtnForm">Submit</button>
                 </form>
@@ -126,7 +126,7 @@
           <div class="card-body">
             <h5 class="card-title">Wisma Suhodo</h5>
             <p class="card-text">
-              Wisma Suhodo, terletak pada sebelah barat ruang makan 1 yang memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
+              Wisma Suhodo, terletak pada sebelah barat ruang makan 1 yang memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebelah timur dan nomor genap pada sebelah barat
             </p>
             <a href="javascript:void(0)" class="btn btn-outline-info" data-bs-toggle="modal"
               data-bs-target="#roomsSuhodo">Cek Ketersedian</a>
@@ -138,7 +138,7 @@
           <div class="card-body">
             <h5 class="card-title">Wisma Surjono</h5>
             <p class="card-text">
-              Wisma Surjono, terlatak pada sebela timur ruang makan 1. Wisma Surjono memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebela timur dan nomor genap pada sebela barat
+              Wisma Surjono, terlatak pada sebelah timur ruang makan 1. Wisma Surjono memiliki 3 lantai dimana untuk penomorannya nomor ganjil pada sebelah timur dan nomor genap pada sebelah barat
             </p>
             <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal"
               data-bs-target="#roomsSurjono">Cek Ketersedian</a>
@@ -207,6 +207,41 @@
     //   modalAlert.click();
     // }
 
+    // Hide and Show used rooms
+    const hide = document.querySelectorAll('button.hide');
+    const see = document.querySelectorAll('button.see');
+    see.forEach((btn) => {
+      btn.style = 'display: none';
+    });
+
+    hide.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btn.style = 'display: none';
+        btn.previousElementSibling.style = 'display: block';
+        removeNotAvailable();
+      });
+    });
+
+    see.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btn.style = 'display: none';
+        btn.nextElementSibling.style = 'display: block';
+        insertNotAvailable();
+      });
+    });
+
+    // hide.addEventListener('click', () => {
+    //   hide.style = 'display: none';
+    //   see.style = 'display: block';
+    //   removeNotAvailable();
+    // });
+
+    // see.addEventListener('click', () => {
+    //   hide.style = 'display: block';
+    //   see.style = 'display: none';
+    //   insertNotAvailable();
+    // });
+
     // Manage rooms 
     // get all the button element
     const button = document.querySelectorAll('td');
@@ -214,7 +249,7 @@
     const seats = @json($wisma);
     const nama = @json($nama);
     const kegiatan = @json($kegiatan);
-    // console.log(nama);
+    // console.log(seats);
     let limit = document.getElementById('limit').value;
     const newSeats = [];
     // check if seat is available from the server
@@ -240,20 +275,26 @@
     button.forEach((btn) => {
       btn.addEventListener('click', () => {
 
-        if (newSeats.length >= limit && !btn.classList.contains('notAvailable')) {
+        if (newSeats.length >= limit 
+            && !btn.classList.contains('notAvailable')
+            // && !btn.classlist.contains('selected')
+          ) {
           alert('Anda hanya bisa memilih ' + limit + ' kamar');
-          // triggerAlert(`Anda hanya bisa memilih ${limit} kamar`);
           return;
         }
 
         // if seats include on seats array then return
-        if (seats.includes(btn.getAttribute('data-name'))) {
+        if (seats.includes(btn.getAttribute('data-name'))
+            && btn.classList.contains('notAvailable')
+            && !btn.classList.contains('selected')
+          ) 
+        {
           alert('Kamar ' + btn.getAttribute('data-name') + ' untuk saat ini tidak tersedia');
-          // triggerAlert(`Kamar ${btn.getAttribute('data-name')} untuk saat ini tidak tersedia`);
           return;
         }
 
         btn.classList.toggle('notAvailable');
+        btn.classList.toggle('selected');
         const seatName = btn.getAttribute('data-name');
         if (newSeats.includes(seatName)) {
           const index = newSeats.indexOf(seatName);
@@ -267,5 +308,24 @@
         console.log(newSeats);
       });
     });
+
+    // remove all class contains notAvailable
+    const removeNotAvailable = () => {
+      button.forEach((btn) => {
+        // if btn in seats remove the class notAvailable
+        if (seats.includes(btn.getAttribute('data-name'))) {
+          btn.classList.remove('notAvailable');
+        }
+      });
+    }
+
+    // insert back the class notAvailable
+    const insertNotAvailable = () => {
+      for (let i = 0; i < button.length; i++) {
+        if (seats.includes((button[i].getAttribute('data-name')))) {
+          button[i].classList.add('notAvailable');
+        }
+      }
+    }
   </script>
   @endsection

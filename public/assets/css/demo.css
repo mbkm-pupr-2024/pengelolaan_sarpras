@@ -166,6 +166,13 @@ table th,td{
   background-color: #db2619;
 }
 
+#seatsDiagram td.selected,
+#displaySeats td.selected
+{
+  color: white;
+  background-color: #ffbf00;
+}
+
 #seatsDiagram td:not(.space,.notAvailable):hover{
   cursor: pointer;
   border-color:greenyellow;

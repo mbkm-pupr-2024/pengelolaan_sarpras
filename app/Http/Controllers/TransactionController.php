@@ -9,6 +9,7 @@ use App\Models\Wisma;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RuanganExports;
 use App\Exports\WismaExports;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
@@ -166,12 +167,24 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
         });
     }
 
+    public function check_available_asrama($start, $end, $room) 
+    {
+        $transactions = Wisma::where('room', $room)
+            ->where(function ($query) use ($start, $end) {
+                $query->whereBetween('start', [$start, $end])
+                    ->orWhereBetween('end', [$start, $end]);
+            })
+            ->get();
+
+            return $transactions;
+    }
+
     public function wisma_store(Request $request)
     {
         $isValidate = $request->validate([
             'name' => 'required|string|max:32',
             'asal' => 'required|string|max:32',
-            'kegiatan' => 'string|max:32',
+            'kegiatan' => 'max:32',
             'rooms' => 'required|string',
             'start' => 'required|date',
             'end' => 'required|date',
@@ -183,7 +196,18 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
 
         $rooms = explode(',', $request->rooms);
 
+        // error untuk orang yang belum dapet ruangan
+        $errorRoom = [];
         foreach ($rooms as $room) {
+
+            $transactions = $this->check_available_asrama($request->start, $request->end, $room);
+            if ($transactions->count() > 0) {
+                // return redirect()->route('transactions.wisma.show')
+                //     ->with('failed', 'Kamar sudah terpakai');
+                array_push($errorRoom, $room);
+                continue;
+            }
+
             Wisma::create([
                 'name' => ucfirst($request->name),
                 'from' => ucfirst($request->asal),
@@ -194,7 +218,15 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
             ]);
         }
         
-        return redirect()->route('wisma-admin')
+        if (count($errorRoom) > 0) {
+            $listRooms =  implode(',', $errorRoom);
+
+            return redirect()->route('transactions.wisma.show')
+                    ->with('failed', "$request->name kamar $listRooms, gagal ditambahkan karena ruangan sudah digunakan")
+                    ->withInput($request->all());
+        }
+
+        return redirect()->route('transactions.wisma.show')
                 ->with('success', 'Data berhasil ditambahkan');
     }
 
@@ -232,34 +264,26 @@ $$ |      \$$$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |$$ |  $$ |
     public function wisma_show()
     {
         $this->check_expired();
+        $today = now()->toDateString();
 
-        $wisma = Wisma::where('isOut', 0)->get();
-        $wisma = $wisma->map(function ($item) {
-            return $item->room;
-        });
-        $nama = Wisma::where('isOut', 0)->get();
-        $nama = $nama->map(function ($item) {
-            return $item->name;
-        });
-        $kegiatan = Wisma::where('isOut', 0)->get();
-        $kegiatan = $kegiatan->map(function ($item) {
-            return $item->kegiatan;
-        });
+        $wismas = Wisma::where('isOut', 0)
+                ->whereRaw('? BETWEEN start AND end', [$today])
+                ->get();
 
         if (auth()->check()){
             if (auth()->user()->role == 'admin') {
                 return view('admin.transaction-wisma', [
-                    'wisma' => $wisma,
-                    'nama' => $nama,
-                    'kegiatan' => $kegiatan,
+                    'wisma' => $wismas->pluck('room'),
+                    'nama' => $wismas->pluck('name'),
+                    'kegiatan' => $wismas->pluck('kegiatan'),
                 ]);
             }
         }
         
         return view('wisma.index', [
-            'wisma' => $wisma,
-            'nama' => $nama,
-            'kegiatan' => $kegiatan,
+            'wisma' => $wismas->pluck('room'),
+            'nama' => $wismas->pluck('name'),
+            'kegiatan' => $wismas->pluck('kegiatan'),
         ]);
     }
 
